@@ -19,8 +19,11 @@ class AccesorioController extends Controller
     public function index()
     {
         //
-        $accesorios = DB::select("Select * from accesorios");
-        return view('components.crear-accesorio', compact('accesorios'));
+        $tipo = DB::table("tipoaccesorio as a")
+        ->select("a.Nombre as Nombre","a.Secuencial as Secuencial")
+        ->orderBy("a.Secuencial", "desc")
+        ->get();
+        return view('components.crear-accesorio', compact('tipo'));
 
     }
 
@@ -29,9 +32,10 @@ class AccesorioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+
     }
 
     /**
@@ -43,6 +47,19 @@ class AccesorioController extends Controller
     public function store(Request $request)
     {
         //
+        $nuevo = new Accesorio();
+        $nuevo->Secuencial=20;
+        $nuevo->SecuencialTipoAccesorio= 1;
+        $nuevo->Codigo = $request->inputCodigo;
+        $nuevo ->Marca = 1;
+        $nuevo->Serie = $request -> inputSerie;
+        $nuevo->Modelo = $request->inputModelo;
+        $nuevo->Descripcion = $request -> inputDescripcion;
+
+        $nuevo->save();
+
+        return redirect()->route('accesorios.index')->with('mensaje', 'Accesorio registrado');
+        
     }
 
     /**

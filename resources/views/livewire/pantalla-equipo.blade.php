@@ -11,7 +11,7 @@
                 <img src="http://localhost/inventory/resources/imagenes/p1.jfif" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Nombre Responsable</h5>
-                    <p class="card-text">Departamento</p>
+                    <p class="card-text">{{$equipo}}</p>
                     <a>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver más</button>
                     </a>

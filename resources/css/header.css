@@ -1,0 +1,51 @@
+.general {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.general header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+    padding: 15px 45px;
+    z-index: 10;
+    
+}
+
+.general .titulo img{
+    margin-left: -10px;
+    padding-top: 10px;
+    width: 220px;
+    height: 50px;
+}
+
+.general header .navegacion {
+    position: absolute;
+    top: 50%;
+    left: 49%;
+  transform: translate(-50%, -50%);
+}
+
+.general header .navegacion li {
+    list-style: none;
+}
+
+.general header .navegacion li a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.general header .navegacion li a:hover {
+    color: #003618;
+}

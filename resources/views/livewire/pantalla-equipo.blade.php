@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-body">
                     <div class="detalles">
-                        <h6 class="card-title">UBICACIÓN:</h6>
+                        <h6 class="card-title">DIRECCIÓN:</h6>
                         <p class="card-text">{{ $equipo[0] -> Direccion }}</p>
                     </div>
                     <div class="detalles">

@@ -1,0 +1,9 @@
+
+  #regiration_form fieldset:not(:first-of-type) {
+    display: none;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #29e242 !important;
+    box-shadow: 0 0 5px rgb(53, 238, 99) !important;
+  }

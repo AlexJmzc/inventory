@@ -1,0 +1,9 @@
+.pantalla{
+    display: flex;
+    flex-direction: row;
+}
+
+.equipo{
+    display: flex;
+    justify-content: flex-end;
+}

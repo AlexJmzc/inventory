@@ -1,0 +1,20 @@
+*{
+  box-sizing: border-box;
+}
+
+.fixed-footer {
+    align-items: center;
+    background-color: #003618;
+    bottom: 0;
+    color: white;
+    display: flex;
+    font-size: 15px;
+    height: 10%;
+    justify-content: center;
+    position: fixed;
+    text-transform: uppercase;
+    width: 100%;
+
+  }
+
+  

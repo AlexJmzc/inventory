@@ -1,0 +1,20 @@
+.modal-title{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.detallesR .card-title{
+    position: absolute;
+  }
+  
+.detallesR p{
+    margin-left: 200px;
+} 
+
+.detallesR{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+  }
+  

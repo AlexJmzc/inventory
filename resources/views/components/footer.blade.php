@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://localhost/inventariohgpt/resources/css/footer.css">
+<link rel="stylesheet" href="http://localhost/inventory/resources/css/footer.css">
 <div class="fixed-footer">
   <p>© <?php
   echo date("Y"); 

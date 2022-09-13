@@ -9,6 +9,7 @@ class Detalle extends Component
 {
 
     public string $cedula;
+    
     public function render()
     {
         $cedula = '';

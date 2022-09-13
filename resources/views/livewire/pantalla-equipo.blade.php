@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="http://localhost/inventariohgpt/resources/css/pantalla-equipo.css">
+<link rel="stylesheet" href="http://localhost/inventory/resources/css/pantalla-equipo.css">
 
 <div class="dprincipal">
     <div class="nombreEquipo">
@@ -8,7 +8,7 @@
     <div class="datos">
         <div class="responsable">
             <div class="card border-success mb-3" style="width: 15rem;">
-                <img src="http://localhost/inventariohgpt/resources/imagenes/p1.jfif" class="card-img-top" alt="...">
+                <img src="http://localhost/inventory/resources/imagenes/p1.jfif" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $equipo[0] -> NombreCompleto }}</h5>
                     <p class="card-text">{{ $equipo[0] -> NombreDepartamento }}</p>

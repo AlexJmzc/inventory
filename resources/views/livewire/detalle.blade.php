@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://localhost/inventariohgpt/resources/css/detalle.css">
+<link rel="stylesheet" href="http://localhost/inventory/resources/css/detalle.css">
 
 <div class="modal-dialog modal-dialog-centered border-success mb-3">
     <div class="modal-content">

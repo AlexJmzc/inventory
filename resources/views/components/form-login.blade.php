@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://localhost/inventariohgpt/resources/css/formLogin.css">
+<link rel="stylesheet" href="http://localhost/inventory/resources/css/formLogin.css">
 
 <div class="container">
 

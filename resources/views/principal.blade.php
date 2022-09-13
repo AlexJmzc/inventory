@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="http://localhost/inventariohgpt/resources/css/principal.css">
+    <link rel="stylesheet" href="http://localhost/inventory/resources/css/principal.css">
 
 
 

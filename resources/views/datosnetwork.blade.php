@@ -14,7 +14,7 @@
             <livewire:navbar></livewire:navbar>
         </div>
         <div class="equipo">
-            <livewire:datos-equipo></livewire:datos-equipo>
+            <livewire:datos-network></livewire:datos-network>
         </div>
     </div>
     

@@ -26,12 +26,24 @@ Route::get('/principal', function () {
     return view('vistaprueba');
 });
 
-// Route::get('/detalleequipos', function () {
-//     return view('detalleequipos');
-// });
+Route::get('/detalleequipos', function () {
+     return view('detalleequipos');
+});
 
 Route::get('/datosequipo', function () {
     return view('datosequipo');
+});
+
+Route::get('/network', function () {
+    return view('datosnetwork');
+});
+
+Route::get('/software', function () {
+    return view('datosequipo');
+});
+
+Route::get('/accesorios', function () {
+    return view('datosaccesorios');
 });
 
 Route::get('/a', function () {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Programas extends Migration
+class ProgramaEquipo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,23 @@ class Programas extends Migration
      */
     public function up()
     {
-        Schema::create('Programas', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->integer('SecuencialEquipo');
+        Schema::create('ProgramaEquipo', function (Blueprint $table) {
+
+            $table->integer('SecuencialEquipo')->unsigned();
+
             $table->foreign('SecuencialEquipo')->references('Secuencial')->on('Equipos')->onDelete('cascade');
-            $table->string('Descripcion', 100)->nullable();
-            $table->tinyInteger('Activo');
-            $table->string('Nombre', 50);
-            $table->string('Version', 50);
-            $table->tinyInteger('Licencia');
-            $table->integer('Bits');
+
+            $table->integer('SecuencialPrograma')->unsigned();
+
+            $table->foreign('SecuencialPrograma')->references('Secuencial')->on('Programas')->onDelete('cascade');
+
+            $table->integer('Bits')->unsigned();
+
             $table->foreign('Bits')->references('Secuencial')->on('TipoBits')->onDelete('cascade');
+
+            $table->tinyInteger('Licencia');
+
+            $table->tinyInteger('Activo');
         });
     }
 

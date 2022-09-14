@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoEquipo extends Migration
+class Procesadores extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class TipoEquipo extends Migration
      */
     public function up()
     {
-        Schema::create('TipoEquipo', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
+        Schema::create('Procesador', function (Blueprint $table) {
+
+            $table->increments('Secuencial');
+
             $table->string('Nombre', 50);
-            $table->tinyInteger('Activo');
+
+            $table->string('Velocidad', 50);
+
         });
     }
 

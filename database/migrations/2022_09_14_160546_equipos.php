@@ -14,36 +14,68 @@ class Equipos extends Migration
     public function up()
     {
         Schema::create('Equipos', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->integer('SecuencialTipoEquipo');
+
+            $table->increments('Secuencial');
+
+            $table->integer('SecuencialTipoEquipo')->unsigned();
+
             $table->foreign('SecuencialTipoEquipo')->references('Secuencial')->on('TipoEquipo')->onDelete('cascade');
+
             $table->string('CedulaResponsable', 10);
+
             $table->foreign('CedulaResponsable')->references('Cedula')->on('Responsable')->onDelete('cascade');
+
             $table->string('Nombre', 50);
+
             $table->string('Codigo', 50);
-            $table->integer('MarcaEquipo');
+
+            $table->integer('MarcaEquipo')->unsigned();
+
             $table->foreign('MarcaEquipo')->references('Secuencial')->on('Marca')->onDelete('cascade');
+
             $table->string('Modelo', 50)->nullable();
+
             $table->string('Serie', 50)->nullable();
+
             $table->string('DireccionIP', 50);
+
             $table->string('DireccionMAC', 50);
+
             $table->string('Dominio', 50);
+
             $table->tinyInteger('PoseeConectividad');
+
             $table->string('Observacion', 100)->nullable();
-            $table->integer('ProcesadorSecuencial');
+
+            $table->integer('ProcesadorSecuencial')->unsigned();
+
             $table->foreign('ProcesadorSecuencial')->references('Secuencial')->on('Procesador')->onDelete('cascade');
+
             $table->tinyInteger('ConectividadImpresora')->nullable();
+
             $table->string('IPImpresora', 50)->nullable();
-            $table->integer('MarcaImpresora')->nullable();
+
+            $table->integer('MarcaImpresora')->unsigned()->nullable();
+
             $table->foreign('MarcaImpresora')->references('Secuencial')->on('Marca')->onDelete('cascade');
+
             $table->string('CapacidadMemoria', 50);
-            $table->integer('MarcaDisco1');
+
+            $table->integer('MarcaDisco1')->unsigned();
+
             $table->foreign('MarcaDisco1')->references('Secuencial')->on('Marca')->onDelete('cascade');
+
             $table->string('CapacidadDisco1', 50);
-            $table->integer('MarcaDisco2')->nullable();
+
+            $table->integer('MarcaDisco2')->unsigned()->nullable();
+
             $table->foreign('MarcaDisco2')->references('Secuencial')->on('Marca')->onDelete('cascade');
+
             $table->string('CapacidadDisco2', 50)->nullable();
+
         });
+
+
     }
 
     /**

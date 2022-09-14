@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoBits extends Migration
+class Marca extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class TipoBits extends Migration
      */
     public function up()
     {
-        Schema::create('TipoBits', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
+        Schema::create('Marca', function (Blueprint $table) {
+
+            $table->increments('Secuencial');
+
             $table->string('Nombre', 50);
+
             $table->tinyInteger('Activo');
+
         });
     }
 

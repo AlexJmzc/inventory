@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Departamento extends Migration
+class TipoBits extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class Departamento extends Migration
      */
     public function up()
     {
-        Schema::create('Departamento', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->string('CodigoDepartamento', 10);
-            $table->string('NombreDepartamento', 100);
-            $table->string('Direccion', 100);
+        Schema::create('TipoBits', function (Blueprint $table) {
+
+            $table->increments('Secuencial');
+
+            $table->string('Nombre', 50);
+
             $table->tinyInteger('Activo');
+
         });
+
 
     }
 

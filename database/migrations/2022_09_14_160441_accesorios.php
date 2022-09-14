@@ -14,16 +14,28 @@ class Accesorios extends Migration
     public function up()
     {
         Schema::create('Accesorios', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->integer('SecuencialTipoAccesorio');
+
+            $table->increments('Secuencial');
+
+            $table->integer('SecuencialTipoAccesorio')->unsigned();
+
             $table->foreign('SecuencialTipoAccesorio')->references('Secuencial')->on('TipoAccesorio')->onDelete('cascade');
+
             $table->string('Codigo', 50);
-            $table->integer('Marca')->nullable();
+
+            $table->integer('Marca')->unsigned()->nullable();
+
             $table->foreign('Marca')->references('Secuencial')->on('Marca')->onDelete('cascade');
+
             $table->string('Serie', 50)->nullable();
+
             $table->string('Modelo', 50)->nullable();
+
             $table->string('Descripcion', 100)->nullable();
+
         });
+
+
     }
 
     /**

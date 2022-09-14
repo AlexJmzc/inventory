@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Detalle extends Migration
+class Mantenimiento extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,20 @@ class Detalle extends Migration
      */
     public function up()
     {
-        Schema::create('Detalle', function (Blueprint $table) {
+        Schema::create('Mantenimiento', function (Blueprint $table) {
+
             $table->string('ResponsableCedula', 10);
+
             $table->foreign('ResponsableCedula')->references('Cedula')->on('Responsable')->onDelete('cascade');
- 	    $table->integer('EquipoSecuencial');
-            $table->foreign('EquipoSecuencial')->references('Secuencial')->on('Equipos')->onDelete('cascade');
-            $table->integer('AccesoriosSecuencial');
-            $table->foreign('AccesoriosSecuencial')->references('Secuencial')->on('Accesorios')->onDelete('cascade');
-            $table->string('FechaEntrega', 50);
-            $table->string('FechaDevolucion', 50)->nullable();
+
+            $table->integer('EquiposSecuencial')->unsigned();
+
+            $table->foreign('EquiposSecuencial')->references('Secuencial')->on('Equipos')->onDelete('cascade');
+
+            $table->string('FechaMantenimiento', 50);
+
+            $table->string('Observacion', 100);
+
         });
     }
 

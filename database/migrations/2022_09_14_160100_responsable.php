@@ -14,16 +14,28 @@ class Responsable extends Migration
     public function up()
     {
         Schema::create('Responsable', function (Blueprint $table) {
+
             $table->string('Cedula', 10)->primary();
-            $table->integer('SecuencialDepartamento');
+
+            $table->integer('SecuencialDepartamento')->unsigned();
+
             $table->foreign('SecuencialDepartamento')->references('Secuencial')->on('Departamento');
+
             $table->string('PrimerNombre', 50);
+
             $table->string('SegundoNombre', 50)->nullable();
+
             $table->string('ApellidoPaterno', 50);
+
             $table->string('ApellidoMaterno', 50)->nullable();
+
             $table->string('FechaNacimiento', 50);
+
             $table->tinyInteger('Activo');
+
         });
+
+
     }
 
     /**

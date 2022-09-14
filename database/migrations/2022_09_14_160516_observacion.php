@@ -14,10 +14,15 @@ class Observacion extends Migration
     public function up()
     {
         Schema::create('Observacion', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
+
+            $table->increments('Secuencial');
+
             $table->string('Descripcion', 100);
-            $table->integer('AccesoriosSecuencial');
+
+            $table->integer('AccesoriosSecuencial')->unsigned();
+
             $table->foreign('AccesoriosSecuencial')->references('Secuencial')->on('Accesorios')->onDelete('cascade');
+
         });
     }
 

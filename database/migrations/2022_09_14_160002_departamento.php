@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoPeriferico extends Migration
+class Departamento extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,18 @@ class TipoPeriferico extends Migration
      */
     public function up()
     {
-        Schema::create('TipoAccesorio', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->string('Nombre', 50);
-            $table->tinyInteger('EntradaSalida');
+        Schema::create('Departamento', function (Blueprint $table) {
+
+            $table->increments('Secuencial');
+
+            $table->string('CodigoDepartamento', 10);
+
+            $table->string('NombreDepartamento', 100);
+
+            $table->string('Direccion', 100);
+
             $table->tinyInteger('Activo');
+
         });
     }
 

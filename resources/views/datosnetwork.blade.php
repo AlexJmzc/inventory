@@ -8,6 +8,7 @@
     <title>Equipo</title>
 </head>
 <body>
+    
     <div><livewire:header></livewire:header></div>
     <div class="pantalla">
         <div class="navegacion">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Procesador extends Migration
+class Programas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class Procesador extends Migration
      */
     public function up()
     {
-        Schema::create('Procesador', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->string('Nombre', 50);
-            $table->string('Velocidad', 50);
-        });
+        Schema::create('Programas', function (Blueprint $table) {
 
+            $table->increments('Secuencial');
+
+            $table->string('Nombre', 50);
+
+            $table->string('Version', 50);
+
+        });
     }
 
     /**

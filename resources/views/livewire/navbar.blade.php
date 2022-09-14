@@ -7,6 +7,7 @@
 
 <div class="p1">
 
+
 <div class="collapse" id="navbarToggleExternalContent" style="font-size: 20px;">
   <div class="bg-light p-4" style="display:flex; flex-direction:column; height: 100vh;">
     <a class="nav-link" aria-current="page" href="/detalleequipos">
@@ -56,6 +57,8 @@
   </div>
 </nav>
 </div>
+
+
 
 
   <script>

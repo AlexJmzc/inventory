@@ -119,8 +119,11 @@ class Equipo extends Model
 	{
 		return $this->hasMany(Programa::class, 'SecuencialEquipo');
 	}
+<<<<<<< HEAD
 
 	public function obtenerEquipoId($id){
 		return Equipo::find($id);
 	}
+=======
+>>>>>>> origin/Javier
 }

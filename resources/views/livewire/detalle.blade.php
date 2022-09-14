@@ -9,23 +9,23 @@
       <div class="modal-body">
                     <div class="detallesR">
                         <h6 class="card-title">CÉDULA:</h6>
-                        <p class="card-text">1804372439</p>
+                        <p class="card-text">{{ $responsable[0] -> Cedula }}</p>
                     </div>
                     <div class="detallesR">
                         <h6 class="card-title">NOMBRES:</h6>
-                        <p class="card-text">JAVIER ALEXANDER</p>
+                        <p class="card-text">{{ $responsable[0] -> Nombres }}</p>
                     </div>
                     <div class="detallesR">
                         <h6 class="card-title">APELLIDOS:</h6>
-                        <p class="card-text">JIMÉNEZ CASTRO</p>
+                        <p class="card-text">{{ $responsable[0] -> Apellidos }}</p>
                     </div>
                     <div class="detallesR">
                         <h6 class="card-title">DEPARTAMENTO:</h6>
-                        <p class="card-text">D1</p>
+                        <p class="card-text">{{ $responsable[0] -> NombreDepartamento }}</p>
                     </div>
                     <div class="detallesR">
                         <h6 class="card-title">F.DE NACIMIENTO:</h6>
-                        <p class="card-text">12/07/00</p>
+                        <p class="card-text">{{ $responsable[0] -> FechaNacimiento }}</p>
                     </div>
                 </div>
       </div>

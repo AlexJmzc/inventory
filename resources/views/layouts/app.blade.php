@@ -27,16 +27,12 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow p-3" id="header" style="background: rgb(240, 235, 235);height:100px">
-            <div class="container">
-                <livewire:header></livewire:header>   
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+ <div class="container">
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                    <livewire:header></livewire:header>   
 
                     </ul>
 
@@ -82,9 +78,15 @@
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
 
     @livewireScripts
     
 </body>
+
+<footer>
+<x-footer></x-footer>
+
+</footer>
 </html>

@@ -17,6 +17,8 @@ class EquipoController extends Controller
     public function index()
     {
         //
+        $eq = Equipo::paginate();
+
         $equipos= DB::table('equipos as e')
         ->join('responsable as r', 'e.CedulaResponsable','=', 'r.Cedula')
         ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
@@ -24,7 +26,11 @@ class EquipoController extends Controller
         ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
         ->get();
 
-        return view('livewire.tabla-equipos', compact('equipos'));
+
+
+
+        return view('livewire.tabla-equipos', compact('equipos'))
+            ->with('i', (request()->input('page', 1) - 1) * $eq->perPage());
     }
 
     /**
@@ -35,6 +41,16 @@ class EquipoController extends Controller
     public function create()
     {
         //
+        $marcas=DB::table('marca')
+        ->select("Nombre", "Secuencial")
+        ->get();
+
+        $procesadores = DB::table('procesador')
+        ->select("Nombre", "Secuencial")
+        ->get();
+
+        $equipo = new Equipo();
+        return view('components.crear-equipo', compact('equipo','marcas', 'procesadores'));
     }
 
     /**
@@ -46,8 +62,34 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $equipo = new Equipo();
+        $equipo->SecuencialTipoEquipo = $request->inputTipoEquipo;
+        $equipo ->CedulaResponsable = $request->cedulaResponsable;
+        $equipo->ProcesadorSecuencial= $request->inputProcesador;
+        $equipo->Nombre= $request->nombreEquipo;
+        $equipo->Codigo= $request -> codigoEquipo;
+        $equipo ->MarcaEquipo= $request ->inputMarcaEquipo;
+        $equipo->Modelo= $request ->modeloEquipo;
+        $equipo ->Serie = $request ->serieEquipo;
+        $equipo ->Observacion = $request->inputDescripcion;
+        $equipo ->DireccionIP = $request->direccionIP;
+        $equipo -> DireccionMAC= $request ->direccionMAC;
+        $equipo -> Dominio= $request->inputDominio;
+        $equipo ->PoseeConectividad= $request->inputConectividad;
+        $equipo->IPImpresora= $request->ipImpresora;
+        $equipo -> ConectividadImpresora = $request->inputConectividadImpresora;
+        $equipo -> MarcaImpresora= $request->inputMarcaImpresora;
+        $equipo->MarcaDisco1 = $request->inputMarcaDisco;
+        $equipo -> CapacidadDisco1 =$request->capacidadDisco;
+        $equipo->MarcaDisco2 = $request->inputMarcaDisco2;
+        $equipo -> CapacidadDisco2 =$request->capacidadDisco2;
+        $equipo ->CapacidadMemoria = $request->memoriaRAM;
 
+        $equipo->save();
+
+        return redirect()->route('equipos.index')
+            ->with('success', 'Equipo agregado correctamente');
+    }
     /**
      * Display the specified resource.
      *

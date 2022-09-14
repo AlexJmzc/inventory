@@ -1,19 +1,26 @@
 @extends('layouts.app')
 
+
+
+
 @section('content')
 
-@if ( session('mensaje') )
-<div class="alert alert-success">{{ session('mensaje') }}</div>
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
 @endif
 
-<div>
-    
+<div class="d-flex align-items-center flex-column mb-3" style="margin-left: 51%;">
+    <a href="{{ route('equipos.create') }}">
+        <button class="btn btn-success">Añadir</button>
+    </a>
 </div>
 
 <div class="row d-flex justify-content-center d-flex align-items-center" style="width:100%;">
     <div class="col-md-8">
         <div class="mt-2 table-responsive-md">
-            <table class="table table-striped">
+            <table id="mytable" class="table table-striped display">
                 <thead>
                     <tr>
                         <th scope="col">Departamento</th>
@@ -24,7 +31,7 @@
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="equipos">
                     @foreach ($equipos as $equipo)
                     <tr>
 
@@ -45,12 +52,17 @@
                     </tr>
                     @endforeach
                 </tbody>
+
+
             </table>
+
         </div>
+
     </div>
 
 </div>
+@endsection
 
 <x-footer></x-footer>
 
-@endsection
+

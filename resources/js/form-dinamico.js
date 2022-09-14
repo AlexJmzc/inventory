@@ -30,19 +30,21 @@ $(document).on('click', '#removeRow', function () {
     $(this).closest('#nuevafila').remove();
 });
 
+
 $(document).on('click', '#addRow', function(){
+    var count = 0;
     var html = '';
     html += '<div class="row g-2" id="nuevafila">';
     html += '<div class="col-md-10">';
     html += '<div class="form-floating mb-3">';
-    html += '<select id="inputMarcaDisco" class="form-select">';
+    html += '<select id="inputMarcaDisco2" class="form-select">';
     html += '<option selected value="">Elegir</option>';
-    html += '<option value=""> ... </option>';
+    html += '<option value="">  </option>' ;
     html += '</select>';
     html += '<label for="inputMarcaDisco" class="form-label">Marca del Disco</label>';
     html += '</div>';
     html += '<div class="form-floating mb-3">';
-    html += '<input class="form-control" name="data[discos]" placeholder="RAM"></input>';
+    html += '<input class="form-control" name="capacidadDisco2" placeholder="RAM"></input>';
     html += '<label for="discos">Capacidad Disco</label>';
     html += '</div>';
     html += '</div>';
@@ -58,3 +60,4 @@ $(document).on('click', '#addRow', function(){
 
 });     
     
+

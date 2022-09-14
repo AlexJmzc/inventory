@@ -51,6 +51,9 @@ class Equipo extends Model
 	public $incrementing = false;
 	public $timestamps = false;
 
+    protected $perPage = 4;
+
+
 	protected $casts = [
 		'Secuencial' => 'int',
 		'SecuencialTipoEquipo' => 'int',

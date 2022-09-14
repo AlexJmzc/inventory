@@ -13,7 +13,7 @@ class DatosNetwork extends Component
     {
         $secuencialequipo = '';
         $network = DB::table('Equipos as e')
-        ->where('e.Secuencial', '=', 31)
+        ->where('e.Secuencial', '=', 1)
         ->join('Marca as m', 'e.MarcaImpresora', '=', 'm.Secuencial')
         ->select('e.Nombre', 'e.Dominio', 'e.PoseeConectividad as Conectividad', 'e.DireccionIP',
                  'e.DireccionMAC', 'e.ConectividadImpresora', 'm.Nombre as Marca', 'e.IPImpresora')

@@ -38,6 +38,10 @@ Route::get('/datosequipo', function () {
     return view('datosequipo');
 });
 
+Route::get('/network', function () {
+    return view('datosnetwork');
+});
+
 Route::get('/detalleequipos', function () {
     return view('detalleequipos');
 })->name('detalleequipos');

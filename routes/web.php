@@ -42,7 +42,15 @@ Route::get('/network', function () {
     return view('datosnetwork');
 });
 
-Route::get('/detalleequipos', function () {
+Route::get('/software', function () {
+    return view('datosprogramas');
+});
+
+Route::get('/accesorios', function () {
+    return view('datosaccesorios');
+});
+
+Route::get('/a', function () {
     return view('detalleequipos');
 })->name('detalleequipos');
 

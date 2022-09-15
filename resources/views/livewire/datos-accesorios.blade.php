@@ -60,19 +60,11 @@
                             <h8>{{ $accesorio -> DescripcionAccesorio }}</h8>
                         @endif
                     </li>
-                    <!--<a>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">OBSERVACIONES</button>
-                    </a>-->
+
                 </ul>             
             </div>
         </div>
-        <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <livewire:observaciones secuencial='{{ $accesorio -> SecuencialAccesorio }}'></livewire:observaciones>
-        </div>-->
+
         @endforeach
-        
     </div>
 </div>
-
-
-    

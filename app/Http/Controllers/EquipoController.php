@@ -29,7 +29,7 @@ class EquipoController extends Controller
 
 
 
-        return view('livewire.tabla-equipos', compact('equipos'))
+        return view('livewire.tabla-equipos', compact('equipos', 'eq'))
             ->with('i', (request()->input('page', 1) - 1) * $eq->perPage());
     }
 
@@ -111,12 +111,15 @@ class EquipoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Equipo  $equipo
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipo $equipo)
+    public function edit($id)
     {
         //
+        $equipo= Equipo::find($id);
+
+        return view('detalleequipos', compact('equipo'));
     }
 
     /**
@@ -129,7 +132,13 @@ class EquipoController extends Controller
     public function update(Request $request, Equipo $equipo)
     {
         //
+        $equipo ->update($request->all());
+
+        return redirect()->route('equipos.index')
+        ->with('success', 'Equipo actualizado');
     }
+    
+    
 
     /**
      * Remove the specified resource from storage.

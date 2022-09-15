@@ -75,7 +75,7 @@ transform: rotate(-135deg);
   display: flex;
   flex-direction: row;
   position: relative;
-  
+  width: auto;  
 }
 
 svg{
@@ -83,4 +83,10 @@ svg{
 }
 .p1 a{
   margin-top: 30px;
+}
+
+@media only screen and (max-width:480px) {
+  .p1 a h5{
+    display: none;
+  }
 }

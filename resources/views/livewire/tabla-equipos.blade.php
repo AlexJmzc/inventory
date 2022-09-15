@@ -1,7 +1,9 @@
 @extends('layouts.app')
+<script src="http://code.jquery.com/jquery-1.9.0rc1.js"></script>
+<script src="http://localhost/inventory/resources/js/pagination.js"></script>
 
-
-
+<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 @section('content')
 
@@ -11,16 +13,14 @@
 </div>
 @endif
 
-<div class="d-flex align-items-center flex-column mb-3" style="margin-left: 51%;">
-    <a href="{{ route('equipos.create') }}">
-        <button class="btn btn-success">Añadir</button>
-    </a>
-</div>
 
-<div class="row d-flex justify-content-center d-flex align-items-center" style="width:100%;">
-    <div class="col-md-8">
+
+<div class="row d-flex justify-content-center align-items-center" style="width:100%;">
+
+    <div class="col-md-10">
+
         <div class="mt-2 table-responsive-md">
-            <table id="mytable" class="table table-striped display">
+            <table id="mytable" class="table dataTables display table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Departamento</th>
@@ -53,16 +53,31 @@
                     @endforeach
                 </tbody>
 
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                        <div class="d-flex  justify-content-end me-4 ">
+                        <a href="{{ route('equipos.create') }}">
+                            <button class="btn btn-success">Añadir</button>
+                        </a>
+                    </div>
+                        </td>
+
+                    </tr>
+
+                </tfoot>
 
             </table>
+            <div>
 
+            </div>
         </div>
+
+
 
     </div>
 
 </div>
+
+
 @endsection
-
-<x-footer></x-footer>
-
-

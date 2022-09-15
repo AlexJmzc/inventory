@@ -1,29 +1,18 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light p-2 text-dark bg-opacity-25 shadow p-3 mb-5" style="background: rgb(240, 235, 235);">
+  <div class="container">
+    <div class="d-flex align-items-center">
+    <a class="navbar-brand align-middle" href="#">
+      <img src="http://localhost/inventory/resources/imagenes/LogoHGPT1.png" height="65" alt="HGPT Logo" loading="lazy" class="d-inline-block align-text-top me-2" />
+    </a>
+    <h5 class="" style="text-align: center;"> HONORABLE GOBIERNO <br> PROVINCIAL DE TUNGURAHUA</h5>
+
+    </div>
 
 
-<!--<link rel="stylesheet" href="http://localhost/inventory/resources/css/header.css">-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+    <div class="d-flex">
+      <a class="me-2" href="#" style="text-decoration: none;color:black">Inicio</a>
+    </div>
 
-
-<div class="container-fluid bg-success">
-  <div class="row align-items-center">
-      <div class="col align-self-start">
-          <a href="/a">
-            <img src="http://localhost/inventory/resources/imagenes/LogoHGPT1.png" alt="" class="Logo">
-          </a>
-      </div>
-      <div class="col align-self-start">
-          <ul class="titulo">
-            <a href="/principal">
-              <img src="http://localhost/inventory/resources/imagenes/titulo.png" alt="" class="Logo">
-            </a>
-          </ul>
-      </div>
-      <div class="col">
-          <ul class="navegacion">
-              <li><a href="/principal">Inicio</a></li>
-          </ul>
-      </div>
-          
-        
   </div>
-</div>
+</nav>

@@ -39,7 +39,7 @@ Route::get('/network', function () {
 });
 
 Route::get('/software', function () {
-    return view('datosequipo');
+    return view('datosprogramas');
 });
 
 Route::get('/accesorios', function () {

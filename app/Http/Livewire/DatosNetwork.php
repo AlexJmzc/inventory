@@ -18,6 +18,6 @@ class DatosNetwork extends Component
         ->select('e.Nombre', 'e.Dominio', 'e.PoseeConectividad as Conectividad', 'e.DireccionIP',
                  'e.DireccionMAC', 'e.ConectividadImpresora', 'm.Nombre as Marca', 'e.IPImpresora')
         ->get();
-        return view('livewire.datos-network', compact('network','secuencialequipo'));
+        return view('livewire.datos-network', compact('network'));
     }
 }

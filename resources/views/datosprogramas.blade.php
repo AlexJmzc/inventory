@@ -8,18 +8,21 @@
     <title>Equipo</title>
 </head>
 <body>
+    
     <div><livewire:header></livewire:header></div>
     <div class="pantalla">
         <div class="navegacion">
             <livewire:navbar></livewire:navbar>
         </div>
         <div class="equipo">
-            <livewire:datos-accesorios></livewire:datos-accesorios>
+            <livewire:datos-programas></livewire:datos-programas>
         </div>
     </div>
     
     
 </body>
 
-
+<footer>
+    <x-footer></x-footer>
+</footer>
 </html>

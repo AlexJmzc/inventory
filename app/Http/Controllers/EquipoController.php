@@ -14,6 +14,9 @@ class EquipoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $name;
+
     public function index()
     {
         //
@@ -99,13 +102,16 @@ class EquipoController extends Controller
     public function show($id)
     {
         
-       // $equipo=Equipo::find($Secuencial);
-        // return view ('livewire.detalle', compact('equipo'));
+        $nombre = 'datos-accesorios';
         $equipo = DB::table('equipos as e')
         ->where('e.Secuencial', $id)
         ->first();
 
-        return view ('detalleequipos', compact('equipo'));
+        return view ('livewire.principal', compact('equipo','nombre'));
+    }
+
+    public function nombre($nom){
+        $this -> name = $nom;
     }
 
     /**

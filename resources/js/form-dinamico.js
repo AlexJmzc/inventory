@@ -15,6 +15,7 @@ $(document).ready(function () {
         current_step.hide();
         setProgressBar(--current);
     });
+    
     setProgressBar(current);
     // Change progress bar action
     function setProgressBar(curStep) {

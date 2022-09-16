@@ -9,14 +9,17 @@ use Illuminate\Support\Facades\DB;
 class DatosProgramas extends Component
 {
 
-    public $secuencialequipo;
+    public $aux;
 
+    public function mount($auxiliar){
+        $this -> aux = $auxiliar;
+    }
 
     public function render()
     {
 
         $programas = DB::table('programaequipo as pro')
-        ->where('pro.SecuencialEquipo', '=', 31)
+        ->where('pro.SecuencialEquipo', '=', $this -> aux)
         ->join('equipos as e', 'pro.SecuencialEquipo', '=', 'e.Secuencial')
         ->join('programas as programas', 'pro.SecuencialPrograma', '=', 'programas.Secuencial')
         ->where('programas.Descripcion', '=', '')

@@ -7,11 +7,18 @@ use Illuminate\Support\Facades\DB;
 
 class DatosAccesorios extends Component
 {
+
+    public $aux;
+
+    public function mount($auxiliar){
+        $this->aux = $auxiliar;
+    }
+
     public function render()
     {
-        $secuencialequipo = '';
+
         $accesorios = DB::table('Detalle as de')
-        ->where('de.EquipoSecuencial', '=', 31)
+        ->where('de.EquipoSecuencial', '=', $this -> aux)
         ->join('Equipos as e', 'e.Secuencial', '=', 'de.EquipoSecuencial')
         ->join('Responsable as res', 'res.Cedula', '=', 'de.ResponsableCedula')
         ->join('Departamento as d', 'd.Secuencial', '=', 'res.SecuencialDepartamento')
@@ -26,6 +33,7 @@ class DatosAccesorios extends Component
                  'tipo.EntradaSalida', 'a.Descripcion as DescripcionAccesorio', 'e.Nombre as NombreEquipo',
                  'a.Secuencial as SecuencialAccesorio')
         ->get();
+
         return view('livewire.datos-accesorios', compact('accesorios'));
     }
 }

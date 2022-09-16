@@ -21,14 +21,17 @@ Route::resource('/equipos', EquipoController::class);
 Route::resource('/accesorios', AccesorioController::class);
 
 
+
 Route::get('/ce', function () {
     return view('components.crear-equipo');
 });
 
 
+
 Route::get('/principal', function () {
-    return view('vistaprueba');
+    return view('livewire.principal');
 });
+
 
 // Route::get('/detalleequipos', function () {
 //     return view('detalleequipos');

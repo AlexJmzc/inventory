@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Models\Equipo;
+
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +11,6 @@ class PantallaEquipo extends Component
 
     public function mount($auxiliar){
         $this->aux = $auxiliar;
-        $this->emit('parametro', $this->aux);
     }
 
     public function render()

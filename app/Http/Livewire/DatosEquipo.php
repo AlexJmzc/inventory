@@ -7,11 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class DatosEquipo extends Component
 {
+
+    public $aux;
+
+    public function mount($auxiliar){
+        $this -> aux = $auxiliar;
+    }
+
     public function render()
     {
-        $secuencialequipo = '';
         $equipo = DB::table('equipos as e')
-        ->where('e.Secuencial', '=', 31)
+        ->where('e.Secuencial', '=', $this -> aux)
         ->join('Responsable as res', 'res.Cedula', '=', 'e.CedulaResponsable')
         ->join('Departamento as d', 'd.Secuencial', '=', 'res.SecuencialDepartamento')
         ->join('Marca as m1', 'e.MarcaEquipo', '=', 'm1.Secuencial')

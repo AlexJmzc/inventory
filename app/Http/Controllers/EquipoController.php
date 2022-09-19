@@ -14,7 +14,6 @@ class EquipoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $name = 'pantalla-equipo';
 
     public function index()
     {
@@ -106,23 +105,6 @@ class EquipoController extends Controller
         // $nombre = 'pantalla-equipo';
         $nombre = $request->get('name');
         //dd($nombre);
-        $equipo = DB::table('equipos as e')
-        ->where('e.Secuencial', $id)
-        ->first();
-
-        return view ('livewire.principal', compact('equipo','nombre'));
-    }
-
-
-    public function a($nom, $ax){
-        $name1 = $nom + $ax;
-        return $this->$name1;
-    }
-
-    public function ver($id, $nom){
-        $nombre = $nom;
-        echo '<script type="text/javascript">' .
-          'console.log(' . $nombre . ');</script>';
         $equipo = DB::table('equipos as e')
         ->where('e.Secuencial', $id)
         ->first();

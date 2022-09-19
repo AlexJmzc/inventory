@@ -60,9 +60,13 @@
                             <h8>{{ $accesorio -> DescripcionAccesorio }}</h8>
                         @endif
                     </li>
-
-                </ul>             
+                   
+                       
+                   
+                </ul>  
+                        
             </div>
+            <button type="button" class="btn btn-outline-success mx-auto">OBSERVACIONES</button>   
         </div>
 
         @endforeach

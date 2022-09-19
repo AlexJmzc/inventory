@@ -67,7 +67,10 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <livewire:detalle aux='{{ $equipo[0] -> Cedula }}'></livewire:detalle>
 </div>
+
+
     

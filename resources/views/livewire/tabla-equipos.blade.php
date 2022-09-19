@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 <script src="http://code.jquery.com/jquery-1.9.0rc1.js"></script>
 <script src="http://localhost/inventory/resources/js/pagination.js"></script>
@@ -42,11 +43,15 @@
 
 
                         <td>
-                            <a href="{{ route('equipos.show', $equipo->Secuencial) }}" style="text-decoration:none; color:black">
+                            
+                            <a href="{{ route('equipos.show', ['equipo'=>$equipo -> Secuencial,'aux'=>$equipo->Secuencial,'name'=>'pantalla-equipo']) }}" style="text-decoration:none; color:black">
                                 <button name="name" type="submit" class="btn btn-warning">
                                     Mostrar
                                 </button>
                             </a>
+                            <!-- <button wire:click="equipos.show({{ $equipo -> Secuencial }}, 'test')">
+                            Add Todo
+                            </button>-->
                         </td>
 
                     </tr>

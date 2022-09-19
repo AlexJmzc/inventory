@@ -14,8 +14,7 @@ class EquipoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public $name;
+    public $name = 'pantalla-equipo';
 
     public function index()
     {
@@ -96,13 +95,17 @@ class EquipoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Equipo  $equipo
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    // public function show(Request $request)
+    public function show(Request $request)
     {
-        
-        $nombre = 'datos-accesorios';
+        $id = $request->get('aux');
+        //dd($request);
+        // $nombre = 'pantalla-equipo';
+        $nombre = $request->get('name');
+        //dd($nombre);
         $equipo = DB::table('equipos as e')
         ->where('e.Secuencial', $id)
         ->first();
@@ -110,9 +113,23 @@ class EquipoController extends Controller
         return view ('livewire.principal', compact('equipo','nombre'));
     }
 
-    public function nombre($nom){
-        $this -> name = $nom;
+
+    public function a($nom, $ax){
+        $name1 = $nom + $ax;
+        return $this->$name1;
     }
+
+    public function ver($id, $nom){
+        $nombre = $nom;
+        echo '<script type="text/javascript">' .
+          'console.log(' . $nombre . ');</script>';
+        $equipo = DB::table('equipos as e')
+        ->where('e.Secuencial', $id)
+        ->first();
+
+        return view ('livewire.principal', compact('equipo','nombre'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -152,8 +169,7 @@ class EquipoController extends Controller
      * @param  \App\Models\Equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipo $equipo)
+    public function destroy()
     {
-        //
     }
 }

@@ -20,6 +20,7 @@ Route::resource('/equipos', EquipoController::class);
 
 Route::resource('/accesorios', AccesorioController::class);
 
+//Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');
 
 
 Route::get('/ce', function () {
@@ -31,36 +32,3 @@ Route::get('/ce', function () {
 Route::get('/principal', function () {
     return view('livewire.principal');
 });
-
-
-// Route::get('/detalleequipos', function () {
-//     return view('detalleequipos');
-// });
-
-Route::get('/datosequipo', function () {
-    return view('datosequipo');
-});
-
-Route::get('/network', function () {
-    return view('datosnetwork');
-});
-
-Route::get('/software', function () {
-    return view('datosprogramas');
-});
-
-Route::get('/accesorios', function () {
-    return view('datosaccesorios');
-});
-
-Route::get('/a', function () {
-    return view('detalleequipos');
-})->name('detalleequipos');
-
-//Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

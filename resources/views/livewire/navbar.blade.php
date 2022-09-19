@@ -9,7 +9,7 @@
 
   <div class="collapse" id="navbarToggleExternalContent" style="font-size: 20px;">
     <div class="bg-light p-4" style="display:flex; flex-direction:column; height: 100vh;">
-      <a class="nav-link d-flex align-items-center" aria-current="page" href="/detalleequipos">
+      <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('equipos.show', ['equipo'=>$sec,'aux'=>$sec,'name'=>'pantalla-equipo']) }}">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-app-indicator" viewBox="0 0 16 16">
             <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z" />
@@ -20,7 +20,7 @@
           <h5 class="m-2"> General </h5>
         </div>
       </a>
-      <a class="nav-link d-flex align-items-center" aria-current="page" href="/datosequipo">
+      <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('equipos.show', ['equipo'=>$sec ,'aux'=>$sec,'name'=>'datos-equipo']) }}">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pc-display" viewBox="0 0 16 16">
             <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V1Zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5ZM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5ZM1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2H1.5Z" />
@@ -30,7 +30,7 @@
           <h5 class="m-2"> Equipo </h5>
         </div>
       </a>
-      <a class="nav-link d-flex align-items-center" aria-current="page" href="/accesorios">
+      <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('equipos.show', ['equipo'=>$sec,'aux'=>$sec,'name'=>'datos-accesorios']) }}">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mouse-fill" viewBox="0 0 16 16">
             <path d="M3 5a5 5 0 0 1 10 0v6a5 5 0 0 1-10 0V5zm5.5-1.5a.5.5 0 0 0-1 0v2a.5.5 0 0 0 1 0v-2z" />
@@ -40,7 +40,7 @@
           <h5 class="m-2"> Accesorios</h5>
         </div>
       </a>
-      <a class="nav-link d-flex align-items-center" aria-current="page" href="/software">
+      <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('equipos.show', ['equipo'=>$sec,'aux'=>$sec,'name'=>'software']) }}">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-windows" viewBox="0 0 16 16">
             <path d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z" />
@@ -50,7 +50,7 @@
           <h5 class="m-2"> Software</h5>
         </div>
       </a>
-      <a class="nav-link d-flex align-items-center" aria-current="page" href="/network">
+      <a class="nav-link d-flex align-items-center" aria-current="page" href="{{ route('equipos.show', ['equipo'=>$sec,'aux'=>$sec,'name'=>'network']) }}">
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">
           <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z" />

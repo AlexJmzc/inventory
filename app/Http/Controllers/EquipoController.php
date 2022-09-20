@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accesorio;
+use App\Models\Detalle;
 use App\Models\Equipo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isEmpty;
 
 class EquipoController extends Controller
 {
@@ -51,8 +55,12 @@ class EquipoController extends Controller
         ->select("Nombre", "Secuencial")
         ->get();
 
+        $programas = DB::table('programas')
+        ->select('Nombre', 'Secuencial', 'Version')
+        ->get();
+
         $equipo = new Equipo();
-        return view('components.crear-equipo', compact('equipo','marcas', 'procesadores'));
+        return view('components.crear-equipo', compact('equipo','marcas', 'procesadores', 'programas'));
     }
 
     /**
@@ -88,6 +96,111 @@ class EquipoController extends Controller
         $equipo ->CapacidadMemoria = $request->memoriaRAM;
 
         $equipo->save();
+
+        $accesorio = new Accesorio();
+        // mouse
+        $accesorio->SecuencialTipoAccesorio =  $request->inputMouse;
+        $accesorio->Codigo = $request->codigoMouse;
+        $accesorio->Serie = $request->serieMouse;
+        $accesorio->Marca = $request->inputMarcaMouse;
+        $accesorio->Descripcion = $request->inputDescripcionMouse;
+        $accesorio->save();
+
+        // teclado
+        $accesorio1 = new Accesorio();
+        $accesorio1->SecuencialTipoAccesorio =  $request->inputTeclado;
+        $accesorio1->Codigo = $request->codigoTeclado;
+        $accesorio1->Serie = $request->serieTeclado;
+        $accesorio1->Marca = $request->inputMarcaTeclado;
+        $accesorio1->Descripcion = $request->inputDescripcionTeclado;
+        $accesorio1->save();
+
+
+        // monitor
+        $accesorio2 = new Accesorio();
+        $accesorio2->SecuencialTipoAccesorio =  $request->inputMonitor;
+        $accesorio2->Codigo = $request->codigoMonitor;
+        $accesorio2->Serie = $request->serieMonitor;
+        $accesorio2->Marca = $request->inputMarcaMonitor;
+        $accesorio2->Descripcion = $request->inputDescripcionMonitor;
+        $accesorio2->save();
+
+
+        // parlantes
+
+        if( !empty($request->codigoParlantes)){
+            $accesorio3 = new Accesorio();
+            $accesorio3->SecuencialTipoAccesorio =  $request->inputParlantes;
+            $accesorio3->Codigo = $request->codigoParlantes;
+            $accesorio3->Serie = $request->serieParlantes;
+            $accesorio3->Marca = $request->inputMarcaParlantes;
+            $accesorio3->Descripcion = $request->inputDescripcionParlantes;
+            $accesorio3->save();
+        }
+
+        //detalle
+        // fecha_Actual
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        
+
+        // conseguir Secuencial Accesorios
+        $acc = DB::table('accesorios as a')
+        ->where('a.Secuencial', '=',$request->codigoMouse)
+        ->select('a.Secuencial')
+        ->get();
+
+        $acc1 = DB::table('accesorios as a')
+        ->where('a.Secuencial', '=', $request->codigoTeclado)
+        ->select('a.Secuencial')
+        ->get();
+
+        $acc2 = DB::table('accesorios as a')
+        ->where('a.Secuencial', '=', $request->codigoMonitor)
+        ->select('a.Secuencial')
+        ->get();
+
+        if( !empty($request->codigoParlantes)){
+            $acc3 = DB::table('accesorios as a')
+            ->where('a.Secuencial', '=', $request->codigoParlantes)
+            ->select('a.Secuencial');
+
+            $detalle3 = new Detalle();        
+            $detalle3->ResponsableCedula = $request->cedulaResponsable;
+            $detalle3->AccesoriosSecuencial = 3;
+            $detalle3->FechaEntrega = $date;
+            $detalle3->save();
+        }            
+
+        
+        $detalle = new Detalle();        
+        $detalle->ResponsableCedula = $request->cedulaResponsable;
+        $detalle->AccesoriosSecuencial = 1;
+        $detalle->FechaEntrega = $date;        
+        $detalle->save();
+
+        $detalle = new Detalle();        
+        $detalle->ResponsableCedula = $request->cedulaResponsable;
+        $detalle->AccesoriosSecuencial = 2;
+        $detalle->FechaEntrega = $date;        
+        $detalle->save();
+
+        $detalle2 = new Detalle();        
+        $detalle2->ResponsableCedula = $request->cedulaResponsable;
+        $detalle2->AccesoriosSecuencial = 4;
+        $detalle2->FechaEntrega = $date;
+        $detalle2->save();
+
+
+
+        // programas
+        if( !empty($request->listaProgramas)){
+            foreach($request->listaProgramas as $programa){                
+                
+            }
+
+        }
+
 
         return redirect()->route('equipos.index')
             ->with('success', 'Equipo agregado correctamente');

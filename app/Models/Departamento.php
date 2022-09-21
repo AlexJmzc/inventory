@@ -26,11 +26,9 @@ class Departamento extends Model
 {
 	protected $table = 'departamento';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'Activo' => 'int'
 	];
 

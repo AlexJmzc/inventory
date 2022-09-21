@@ -39,6 +39,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Marca|null $marca
  * @property Procesador $procesador
  * @property Tipoequipo $tipoequipo
+ * @property Detalle $detalle
  * @property Mantenimiento $mantenimiento
  * @property Collection|Programa[] $programas
  *
@@ -48,12 +49,9 @@ class Equipo extends Model
 {
 	protected $table = 'equipos';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
-
 	protected $casts = [
-		'Secuencial' => 'int',
 		'SecuencialTipoEquipo' => 'int',
 		'MarcaEquipo' => 'int',
 		'PoseeConectividad' => 'int',
@@ -108,6 +106,11 @@ class Equipo extends Model
 		return $this->belongsTo(Tipoequipo::class, 'SecuencialTipoEquipo');
 	}
 
+	public function detalle()
+	{
+		return $this->hasOne(Detalle::class, 'EquipoSecuencial');
+	}
+
 	public function mantenimiento()
 	{
 		return $this->hasOne(Mantenimiento::class, 'EquiposSecuencial');
@@ -115,10 +118,7 @@ class Equipo extends Model
 
 	public function programas()
 	{
-		return $this->hasMany(Programa::class, 'SecuencialEquipo');
-	}
-
-	public function obtenerEquipoId($id){
-		return Equipo::find($id);
+		return $this->belongsToMany(Programa::class, 'programaequipo', 'SecuencialEquipo', 'SecuencialPrograma')
+					->withPivot('Bits', 'Licencia', 'Activo');
 	}
 }

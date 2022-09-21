@@ -24,12 +24,7 @@ class Procesador extends Model
 {
 	protected $table = 'procesador';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
-
-	protected $casts = [
-		'Secuencial' => 'int'
-	];
 
 	protected $fillable = [
 		'Nombre',

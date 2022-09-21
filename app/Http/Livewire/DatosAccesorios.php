@@ -33,7 +33,15 @@ class DatosAccesorios extends Component
                  'tipo.EntradaSalida', 'a.Descripcion as DescripcionAccesorio', 'e.Nombre as NombreEquipo',
                  'a.Secuencial as SecuencialAccesorio')
         ->get();
-        
-        return view('livewire.datos-accesorios', compact('accesorios'));
+
+        $tipo = DB::table('tipoaccesorio')
+        ->select("Nombre", "Secuencial")
+        ->get();
+
+        $marcas = DB::table('marca')
+        ->select("Nombre", "Secuencial")
+        ->get();
+
+        return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas'));
     }
 }

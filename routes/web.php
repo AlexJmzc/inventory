@@ -27,6 +27,10 @@ Route::get('/ce', function () {
     return view('components.crear-equipo');
 });
 
+Route::get('/se', function () {
+    return view('components.crear-equipo');
+});
+
 
 
 Route::get('/principal', function () {

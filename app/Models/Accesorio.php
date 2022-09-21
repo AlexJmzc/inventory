@@ -31,11 +31,9 @@ class Accesorio extends Model
 {
 	protected $table = 'accesorios';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'SecuencialTipoAccesorio' => 'int',
 		'Marca' => 'int'
 	];

@@ -6,7 +6,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Nombre
  * @property int $Activo
  * 
- * @property Collection|Programa[] $programas
+ * @property Programaequipo $programaequipo
  *
  * @package App\Models
  */
@@ -24,11 +23,9 @@ class Tipobit extends Model
 {
 	protected $table = 'tipobits';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'Activo' => 'int'
 	];
 
@@ -37,8 +34,8 @@ class Tipobit extends Model
 		'Activo'
 	];
 
-	public function programas()
+	public function programaequipo()
 	{
-		return $this->hasMany(Programa::class, 'Bits');
+		return $this->hasOne(Programaequipo::class, 'Bits');
 	}
 }

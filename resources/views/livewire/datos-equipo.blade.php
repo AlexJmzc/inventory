@@ -1,7 +1,7 @@
 <div class="container text-center">
     <div class="row">
         <div class="col  mb-5 mt-5">
-            <h3><span class="badge bg-secondary">{{$equipo[0] -> NombreEquipo}}</span></h3>
+            <h3><span class="badge bg-secondary">{{$equipo -> NombreEquipo}}</span></h3>
         </div>
     </div>
     <div class="row">
@@ -13,27 +13,27 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <h6>CEDULA:</h6>
-                        <h8>{{ $equipo[0] -> CedulaResponsable }}</h8>
+                        <h8>{{ $equipo -> CedulaResponsable }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>NOMBRES:</h6>
-                        <h8>{{ $equipo[0] -> Nombres }}</h8>
+                        <h8>{{ $equipo -> Nombres }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>APELLIDOS:</h6>
-                        <h8>{{ $equipo[0] -> Apellidos }}</h8>
+                        <h8>{{ $equipo -> Apellidos }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>CODIGO DE DEPARTAMENTO:</h6>
-                        <h8>{{ $equipo[0] -> CodigoDepartamento }}</h8>
+                        <h8>{{ $equipo -> CodigoDepartamento }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>DEPARTAMENTO:</h6>
-                        <h8>{{ $equipo[0] -> NombreDepartamento }}</h8>
+                        <h8>{{ $equipo -> NombreDepartamento }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>DIRECCION:</h6>
-                        <h8>{{ $equipo[0] -> Direccion }}</h8>
+                        <h8>{{ $equipo -> Direccion }}</h8>
                     </li>
                 </ul>             
             </div>
@@ -46,38 +46,38 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <h6>CODIGO:</h6>
-                        <h8>{{ $equipo[0] -> CodigoEquipo }}</h8>
+                        <h8>{{ $equipo -> CodigoEquipo }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>TIPO:</h6>
-                        <h8>{{ $equipo[0] -> TipoEquipo }}</h8>
+                        <h8>{{ $equipo -> TipoEquipo }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>MARCA:</h6>
-                        <h8>{{ $equipo[0] -> MarcaEquipo }}</h8>
+                        <h8>{{ $equipo -> MarcaEquipo }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>MODELO:</h6>
-                        @if($equipo[0] -> ModeloEquipo == '')
+                        @if($equipo -> ModeloEquipo == '')
                             <h8>SM</h8>
                         @else
-                            <h8>{{ $equipo[0] -> ModeloEquipo }}</h8>
+                            <h8>{{ $equipo -> ModeloEquipo }}</h8>
                         @endif
                     </li>
                     <li class="list-group-item">
                         <h6>SERIE:</h6>
-                        @if($equipo[0] -> SerieEquipo == '')
+                        @if($equipo -> SerieEquipo == '')
                             <h8>SN</h8>
                         @else
-                            <h8>{{ $equipo[0] -> SerieEquipo }}</h8>
+                            <h8>{{ $equipo -> SerieEquipo }}</h8>
                         @endif
                     </li>
                     <li class="list-group-item">
                         <h6>OBSERVACION:</h6>
-                        @if($equipo[0] -> Observacion == '')
+                        @if($equipo -> Observacion == '')
                             <h8>NINGUNA</h8>
                         @else
-                            <h8>{{ $equipo[0] -> Observacion }}</h8>
+                            <h8>{{ $equipo -> Observacion }}</h8>
                         @endif
                     </li>
                 </ul>             
@@ -91,34 +91,34 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <h6>PROCESADOR:</h6>
-                        <h8>{{ $equipo[0] -> Procesador }}</h8>
+                        <h8>{{ $equipo -> Procesador }}</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>VELOCIDAD:</h6>
-                        <h8>{{ $equipo[0] -> Velocidad }} GHz</h8>
+                        <h8>{{ $equipo -> Velocidad }} GHz</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>MEMORIA:</h6>
-                        <h8>{{ $equipo[0] ->  Memoria}} GB</h8>
+                        <h8>{{ $equipo ->  Memoria}} GB</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>DISCO:</h6>
-                        <h8>{{ $equipo[0] -> CapacidadDisco1 }} TB</h8>
+                        <h8>{{ $equipo -> CapacidadDisco1 }} TB</h8>
                     </li>
                     <li class="list-group-item">
                         <h6>MARCA:</h6>
-                        <h8>{{ $equipo[0] -> MarcaDisco1 }}</h8>
+                        <h8>{{ $equipo -> MarcaDisco1 }}</h8>
                     </li>
-                    @if($equipo[0] -> CapacidadDisco2 == NULL)
+                    @if($equipo -> CapacidadDisco2 == NULL)
 
                     @else
                         <li class="list-group-item">
-                            <h6>DISCO:</h6>
-                            <h8>{{ $equipo[0] -> CapacidadDisco2 }} TB</h8>
+                            <h6>DISCO 2:</h6>
+                            <h8>{{ $datosDisco2 -> CapacidadDisco2 }} TB</h8>
                         </li>
                         <li class="list-group-item">
                             <h6>MARCA:</h6>
-                            <h8>{{ $equipo[0] -> MarcaDisco2 }}</h8>
+                            <h8>{{ $datosDisco2 -> Nombre }}</h8>
                         </li>
                     @endif
                 </ul>             

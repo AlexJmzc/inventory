@@ -181,16 +181,16 @@
                     <label for="mouse">Serie</label>
                 </div>
 
-                <div class="col-md-3 form-floating mb-3">
+                <!--<div class="col-md-3 form-floating mb-3">
                     <select name="conectorMouse" id="conectorMouse" class="form-select">
                         <option selected value="">Elegir</option>
                         <option value="PS/2"> PS/2 </option>
                         <option value="USB"> USB </option>
                     </select>
                     <label for="conectorMouse" class="form-label">Tipo de conector</label>
-                </div>
+                </div>-->
 
-                <div class="col-md-9 form-floating mb-3">
+                <div class="col-md-12 form-floating mb-3">
                     <textarea class="form-control" name="inputDescripcionMouse" rows="2"></textarea>
                     <label for="inputDescripcionMouse" class="form-label">Descripción</label>
                 </div>
@@ -222,16 +222,16 @@
                     <label for="Teclado">Serie</label>
                 </div>
 
-                <div class="col-md-3 form-floating mb-3">
+                <!--<div class="col-md-3 form-floating mb-3">
                     <select name="conectorTeclado" id="conectorTeclado" class="form-select">
                         <option selected value="">Elegir</option>
                         <option value="PS/2"> PS/2 </option>
                         <option value="USB"> USB </option>
                     </select>
                     <label for="conectorTeclado" class="form-label">Tipo de conector</label>
-                </div>
+                </div>-->
 
-                <div class="col-md-9 form-floating mb-3">
+                <div class="col-md-12 form-floating mb-3">
                     <textarea class="form-control" name="inputDescripcionTeclado" rows="2"></textarea>
                     <label for="inputDescripcionTeclado" class="form-label">Descripción</label>
                 </div>
@@ -255,6 +255,11 @@
                         @endforeach
                     </select>
                     <label for="inputMarcaMonitor" class="form-label">Marca</label>
+                </div>
+
+                <div class="col-md form-floating mb-3">
+                    <input class="form-control" name="modeloMonitor" placeholder="Monitor"></input>
+                    <label for="Monitor">Modelo</label>
                 </div>
 
                 <div class="col-md form-floating mb-3">
@@ -357,6 +362,30 @@
                 </label>
                 @endforeach
             </div>
+            <button type="button" id='botonL'>M</button>
+
+            <ul id='lista' class="list-group"></ul>
+            <script>
+                var boton = document.getElementById('botonL');
+                var lista = document.getElementById('lista');
+                var checks = document.querySelectorAll('.form-check-input');
+
+                boton.addEventListener('click', function(){
+                    lista.innerHTML = '';
+                    var programasEquipo = [];
+                    checks.forEach((e)=>{
+                        if(e.checked == true){
+                            var elemento = document.createElement('li');
+                            elemento.className = 'list-group-item';
+                            elemento.innerHTML = e.value;
+                            programasEquipo.push(e.value);
+                            lista.appendChild(elemento);
+                        }
+                        
+                    });
+                    console.log(programasEquipo);
+                });
+            </script>
 
             <input type="button" name="previous" class="previous btn btn-light" value="Previo" />
             <input type="button" name="next" class="next btn btn-danger" value="Siguiente" />

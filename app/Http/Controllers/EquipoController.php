@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Accesorio;
 use App\Models\Detalle;
 use App\Models\Equipo;
+use App\Models\Programa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,18 +20,22 @@ class EquipoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public $name = 'pantalla-equipo';
+    public $acc;
+    public $acc1;
+    public $acc2;
+    public $acc3;
 
     public function index()
     {
         //
         $eq = Equipo::paginate();
 
-        $equipos= DB::table('equipos as e')
-        ->join('responsable as r', 'e.CedulaResponsable','=', 'r.Cedula')
-        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
-        ->orderby('d.NombreDepartamento', 'asc')
-        ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
-        ->get();
+        $equipos = DB::table('equipos as e')
+            ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
+            ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
+            ->orderby('d.NombreDepartamento', 'asc')
+            ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+            ->get();
 
 
 
@@ -47,20 +52,21 @@ class EquipoController extends Controller
     public function create()
     {
         //
-        $marcas=DB::table('marca')
-        ->select("Nombre", "Secuencial")
-        ->get();
+        $marcas = DB::table('marca')
+            ->select("Nombre", "Secuencial")
+            ->get();
 
         $procesadores = DB::table('procesador')
-        ->select("Nombre", "Secuencial")
-        ->get();
+            ->select("Nombre", "Secuencial")
+            ->get();
 
         $programas = DB::table('programas')
-        ->select('Nombre', 'Secuencial', 'Version')
-        ->get();
+            ->select('Nombre', 'Secuencial', 'Version')
+            ->get();
+
 
         $equipo = new Equipo();
-        return view('components.crear-equipo', compact('equipo','marcas', 'procesadores', 'programas'));
+        return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
     }
 
     /**
@@ -72,138 +78,148 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         //
-        $equipo = new Equipo();
-        $equipo->SecuencialTipoEquipo = $request->inputTipoEquipo;
-        $equipo ->CedulaResponsable = $request->cedulaResponsable;
-        $equipo->ProcesadorSecuencial= $request->inputProcesador;
-        $equipo->Nombre= $request->nombreEquipo;
-        $equipo->Codigo= $request -> codigoEquipo;
-        $equipo ->MarcaEquipo= $request ->inputMarcaEquipo;
-        $equipo->Modelo= $request ->modeloEquipo;
-        $equipo ->Serie = $request ->serieEquipo;
-        $equipo ->Observacion = $request->inputDescripcion;
-        $equipo ->DireccionIP = $request->direccionIP;
-        $equipo -> DireccionMAC= $request ->direccionMAC;
-        $equipo -> Dominio= $request->inputDominio;
-        $equipo ->PoseeConectividad= $request->inputConectividad;
-        $equipo->IPImpresora= $request->ipImpresora;
-        $equipo -> ConectividadImpresora = $request->inputConectividadImpresora;
-        $equipo -> MarcaImpresora= $request->inputMarcaImpresora;
-        $equipo->MarcaDisco1 = $request->inputMarcaDisco;
-        $equipo -> CapacidadDisco1 =$request->capacidadDisco;
-        $equipo->MarcaDisco2 = $request->inputMarcaDisco2;
-        $equipo -> CapacidadDisco2 =$request->capacidadDisco2;
-        $equipo ->CapacidadMemoria = $request->memoriaRAM;
+        DB::beginTransaction();
+        try {
+            $ced = $request->cedulaResponsable;
+            $codMouse = $request->codigoMouse;
+            $codTeclado = $request->codigoTeclado;
+            $codMonitor = $request->codigoMonitor;
 
-        $equipo->save();
+            $equipo = new Equipo();
+            $equipo->SecuencialTipoEquipo = $request->inputTipoEquipo;
+            $equipo->CedulaResponsable = $request->cedulaResponsable;
+            $equipo->ProcesadorSecuencial = $request->inputProcesador;
+            $equipo->Nombre = $request->nombreEquipo;
+            $equipo->Codigo = $request->codigoEquipo;
+            $equipo->MarcaEquipo = $request->inputMarcaEquipo;
+            $equipo->Modelo = $request->modeloEquipo;
+            $equipo->Serie = $request->serieEquipo;
+            $equipo->Observacion = $request->inputDescripcion;
+            $equipo->DireccionIP = $request->direccionIP;
+            $equipo->DireccionMAC = $request->direccionMAC;
+            $equipo->Dominio = $request->inputDominio;
+            $equipo->PoseeConectividad = $request->inputConectividad;
+            $equipo->IPImpresora = $request->ipImpresora;
+            $equipo->ConectividadImpresora = $request->inputConectividadImpresora;
+            $equipo->MarcaImpresora = $request->inputMarcaImpresora;
+            $equipo->MarcaDisco1 = $request->inputMarcaDisco;
+            $equipo->CapacidadDisco1 = $request->capacidadDisco;
+            $equipo->MarcaDisco2 = $request->inputMarcaDisco2;
+            $equipo->CapacidadDisco2 = $request->capacidadDisco2;
+            $equipo->CapacidadMemoria = $request->memoriaRAM;
 
-        $accesorio = new Accesorio();
-        // mouse
-        $accesorio->SecuencialTipoAccesorio =  $request->inputMouse;
-        $accesorio->Codigo = $request->codigoMouse;
-        $accesorio->Serie = $request->serieMouse;
-        $accesorio->Marca = $request->inputMarcaMouse;
-        $accesorio->Descripcion = $request->inputDescripcionMouse;
-        $accesorio->save();
+            $equipo->save();
 
-        // teclado
-        $accesorio1 = new Accesorio();
-        $accesorio1->SecuencialTipoAccesorio =  $request->inputTeclado;
-        $accesorio1->Codigo = $request->codigoTeclado;
-        $accesorio1->Serie = $request->serieTeclado;
-        $accesorio1->Marca = $request->inputMarcaTeclado;
-        $accesorio1->Descripcion = $request->inputDescripcionTeclado;
-        $accesorio1->save();
-
-
-        // monitor
-        $accesorio2 = new Accesorio();
-        $accesorio2->SecuencialTipoAccesorio =  $request->inputMonitor;
-        $accesorio2->Codigo = $request->codigoMonitor;
-        $accesorio2->Serie = $request->serieMonitor;
-        $accesorio2->Marca = $request->inputMarcaMonitor;
-        $accesorio2->Descripcion = $request->inputDescripcionMonitor;
-        $accesorio2->save();
-
-
-        // parlantes
-
-        if( !empty($request->codigoParlantes)){
-            $accesorio3 = new Accesorio();
-            $accesorio3->SecuencialTipoAccesorio =  $request->inputParlantes;
-            $accesorio3->Codigo = $request->codigoParlantes;
-            $accesorio3->Serie = $request->serieParlantes;
-            $accesorio3->Marca = $request->inputMarcaParlantes;
-            $accesorio3->Descripcion = $request->inputDescripcionParlantes;
-            $accesorio3->save();
-        }
-
-        //detalle
-        // fecha_Actual
-        $date = Carbon::now();
-        $date = $date->format('Y-m-d');
-        
-
-        // conseguir Secuencial Accesorios
-        $acc = DB::table('accesorios as a')
-        ->where('a.Secuencial', '=',$request->codigoMouse)
-        ->select('a.Secuencial')
-        ->get();
-
-        $acc1 = DB::table('accesorios as a')
-        ->where('a.Secuencial', '=', $request->codigoTeclado)
-        ->select('a.Secuencial')
-        ->get();
-
-        $acc2 = DB::table('accesorios as a')
-        ->where('a.Secuencial', '=', $request->codigoMonitor)
-        ->select('a.Secuencial')
-        ->get();
-
-        if( !empty($request->codigoParlantes)){
-            $acc3 = DB::table('accesorios as a')
-            ->where('a.Secuencial', '=', $request->codigoParlantes)
-            ->select('a.Secuencial');
-
-            $detalle3 = new Detalle();        
-            $detalle3->ResponsableCedula = $request->cedulaResponsable;
-            $detalle3->AccesoriosSecuencial = 3;
-            $detalle3->FechaEntrega = $date;
-            $detalle3->save();
-        }            
-
-        
-        $detalle = new Detalle();        
-        $detalle->ResponsableCedula = $request->cedulaResponsable;
-        $detalle->AccesoriosSecuencial = 1;
-        $detalle->FechaEntrega = $date;        
-        $detalle->save();
-
-        $detalle = new Detalle();        
-        $detalle->ResponsableCedula = $request->cedulaResponsable;
-        $detalle->AccesoriosSecuencial = 2;
-        $detalle->FechaEntrega = $date;        
-        $detalle->save();
-
-        $detalle2 = new Detalle();        
-        $detalle2->ResponsableCedula = $request->cedulaResponsable;
-        $detalle2->AccesoriosSecuencial = 4;
-        $detalle2->FechaEntrega = $date;
-        $detalle2->save();
+            //Mouse
+            self::AgregarAccesorio(
+                '',
+                $request->inputMarcaMouse,
+                $request->serieMouse,
+                $request->inputDescripcionMouse,
+                $request->inputMouse,
+                $request->codigoMouse
+            );
+            //Teclado
+            self::AgregarAccesorio(
+                '',
+                $request->inputMarcaTeclado,
+                $request->serieTeclado,
+                $request->inputDescripcionTeclado,
+                $request->inputTeclado,
+                $request->codigoTeclado
+            );
+            //Monitor
+            self::AgregarAccesorio(
+                $request->modeloMonitor,
+                $request->inputMarcaMonitor,
+                $request->serieMonitor,
+                $request->inputDescripcionMonitor,
+                $request->inputMonitor,
+                $request->codigoMonitor
+            );
 
 
-
-        // programas
-        if( !empty($request->listaProgramas)){
-            foreach($request->listaProgramas as $programa){                
-                
+            //Parlantes
+            if (!empty($request->codigoParlantes)) {
+                self::AgregarAccesorio(
+                    '',
+                    $request->inputMarcaParlantes,
+                    $request->serieParlantes,
+                    $request->inputDescripcionParlantes,
+                    $request->inputParlantes,
+                    $request->codigoParlantes
+                );
             }
 
+
+            //Fecha
+            $date = Carbon::now();
+            $date = $date->format('Y-m-d');
+
+            //Detalle Mouse
+            self::AgregarDetalle($ced, $codMouse, $date);
+
+            //Detalle Teclado
+            self::AgregarDetalle($ced, $codTeclado, $date);
+
+            //Detalle Monitor
+            self::AgregarDetalle($ced, $codMonitor, $date);
+
+            //Detalle Parlantes
+            if (!empty($request->codigoParlantes)) {
+                $codParlantes = $request->codigoParlantes;
+                self::AgregarDetalle($ced, $codParlantes, $date);
+            }
+
+            // programas
+            if (!empty($request->listaProgramas)) {
+                foreach ($request->listaProgramas as $item) {
+                    $programas = new PorgramaEq();
+                    $programas->SecuencialEquipo = 1;
+                    $programas->Secuenc
+                }
+            }
+
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $e->getMessage();
         }
+
+
+
 
 
         return redirect()->route('equipos.index')
             ->with('success', 'Equipo agregado correctamente');
+    }
+
+    public function AgregarAccesorio($modelo, $marca, $serie, $descripcion, $tipo, $codigo)
+    {
+        $accesorio = new Accesorio();
+        $accesorio->SecuencialTipoAccesorio =  $tipo;
+        $accesorio->Codigo = $codigo;
+        $accesorio->Serie = $serie;
+        $accesorio->Modelo = $modelo;
+        $accesorio->Marca = $marca;
+        $accesorio->Descripcion = $descripcion;
+        $accesorio->save();
+    }
+
+    public function AgregarDetalle($cedulaDetalle, $codigo, $date)
+    {
+        $acces = DB::table('accesorios as a')
+            ->where('a.Codigo', '=', $codigo)
+            ->select('a.Secuencial')
+            ->first();
+
+        $detalle = new Detalle();
+        $detalle->ResponsableCedula = $cedulaDetalle;
+        $detalle->AccesoriosSecuencial = $acces->Secuencial;
+        $detalle->FechaEntrega = $date;
+        $detalle->FechaDevolucion = '';
+        $detalle->save();
     }
     /**
      * Display the specified resource.
@@ -220,27 +236,10 @@ class EquipoController extends Controller
         $nombre = $request->get('name');
         //dd($nombre);
         $equipo = DB::table('equipos as e')
-        ->where('e.Secuencial', $id)
-        ->first();
+            ->where('e.Secuencial', $id)
+            ->first();
 
-        return view ('livewire.principal', compact('equipo','nombre'));
-    }
-
-
-    public function a($nom, $ax){
-        $name1 = $nom + $ax;
-        return $this->$name1;
-    }
-
-    public function ver($id, $nom){
-        $nombre = $nom;
-        echo '<script type="text/javascript">' .
-          'console.log(' . $nombre . ');</script>';
-        $equipo = DB::table('equipos as e')
-        ->where('e.Secuencial', $id)
-        ->first();
-
-        return view ('livewire.principal', compact('equipo','nombre'));
+        return view('livewire.principal', compact('equipo', 'nombre'));
     }
 
 
@@ -253,7 +252,7 @@ class EquipoController extends Controller
     public function edit($id)
     {
         //
-        $equipo= Equipo::find($id);
+        $equipo = Equipo::find($id);
 
         return view('detalleequipos', compact('equipo'));
     }
@@ -268,13 +267,13 @@ class EquipoController extends Controller
     public function update(Request $request, Equipo $equipo)
     {
         //
-        $equipo ->update($request->all());
+        $equipo->update($request->all());
 
         return redirect()->route('equipos.index')
-        ->with('success', 'Equipo actualizado');
+            ->with('success', 'Equipo actualizado');
     }
-    
-    
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -282,7 +281,7 @@ class EquipoController extends Controller
      * @param  \App\Models\Equipo  $equipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Equipo $equipo)
     {
     }
 }

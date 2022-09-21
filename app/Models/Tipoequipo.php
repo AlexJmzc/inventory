@@ -24,11 +24,9 @@ class Tipoequipo extends Model
 {
 	protected $table = 'tipoequipo';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'Activo' => 'int'
 	];
 

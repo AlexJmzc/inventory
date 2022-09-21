@@ -362,7 +362,7 @@
                 </label>
                 @endforeach
             </div>
-            <button type="button" id='botonL'>M</button>
+            <!--<button type="button" id='botonL'>M</button>
 
             <ul id='lista' class="list-group"></ul>
             <script>
@@ -385,7 +385,7 @@
                     });
                     console.log(programasEquipo);
                 });
-            </script>
+            </script>-->
 
             <input type="button" name="previous" class="previous btn btn-light" value="Previo" />
             <input type="button" name="next" class="next btn btn-danger" value="Siguiente" />

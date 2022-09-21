@@ -25,11 +25,9 @@ class Marca extends Model
 {
 	protected $table = 'marca';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'Activo' => 'int'
 	];
 

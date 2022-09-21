@@ -43,7 +43,4 @@
     
 </body>
 
-<footer>
-    <x-footer></x-footer>
-</footer>
 </html>

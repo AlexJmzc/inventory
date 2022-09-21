@@ -23,11 +23,9 @@ class Observacion extends Model
 {
 	protected $table = 'observacion';
 	protected $primaryKey = 'Secuencial';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Secuencial' => 'int',
 		'AccesoriosSecuencial' => 'int'
 	];
 

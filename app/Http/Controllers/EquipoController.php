@@ -6,6 +6,7 @@ use App\Models\Accesorio;
 use App\Models\Detalle;
 use App\Models\Equipo;
 use App\Models\Programa;
+use App\Models\Programaequipo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -151,35 +152,46 @@ class EquipoController extends Controller
                 );
             }
 
+            $codEquipo= $request->codigoEquipo;
+
+            //buscar-equipo
+            $secEquipo = DB::table('equipos')
+            ->where("Codigo","=", $codEquipo)
+            ->select("Secuencial")
+            ->first();
 
             //Fecha
             $date = Carbon::now();
             $date = $date->format('Y-m-d');
 
             //Detalle Mouse
-            self::AgregarDetalle($ced, $codMouse, $date);
+            self::AgregarDetalle($ced, $codMouse, $date,$secEquipo->Secuencial);
 
             //Detalle Teclado
-            self::AgregarDetalle($ced, $codTeclado, $date);
+            self::AgregarDetalle($ced, $codTeclado, $date,$secEquipo->Secuencial);
 
             //Detalle Monitor
-            self::AgregarDetalle($ced, $codMonitor, $date);
+            self::AgregarDetalle($ced, $codMonitor, $date, $secEquipo->Secuencial);
 
             //Detalle Parlantes
             if (!empty($request->codigoParlantes)) {
                 $codParlantes = $request->codigoParlantes;
-                self::AgregarDetalle($ced, $codParlantes, $date);
+                self::AgregarDetalle($ced, $codParlantes, $date,$secEquipo->Secuencial);
             }
+
 
             // programas
             if (!empty($request->listaProgramas)) {
                 foreach ($request->listaProgramas as $item) {
-                    $programas = new PorgramaEq();
-                    $programas->SecuencialEquipo = 1;
-                    $programas->Secuenc
+                    $programas = new Programaequipo();
+                    $programas->SecuencialEquipo = $secEquipo->Secuencial;
+                    $programas->SecuencialPrograma = $item;
+                    $programas->Bits = 1;
+                    $programas->Licencia=1;
+                    $programas->Activo=1;
+                    $programas->save();
                 }
             }
-
 
             DB::commit();
         } catch (\Exception $e) {
@@ -207,7 +219,7 @@ class EquipoController extends Controller
         $accesorio->save();
     }
 
-    public function AgregarDetalle($cedulaDetalle, $codigo, $date)
+    public function AgregarDetalle($cedulaDetalle, $codigo, $date,$secEquipo)
     {
         $acces = DB::table('accesorios as a')
             ->where('a.Codigo', '=', $codigo)
@@ -216,6 +228,7 @@ class EquipoController extends Controller
 
         $detalle = new Detalle();
         $detalle->ResponsableCedula = $cedulaDetalle;
+        $detalle->EquipoSecuencial = $secEquipo;
         $detalle->AccesoriosSecuencial = $acces->Secuencial;
         $detalle->FechaEntrega = $date;
         $detalle->FechaDevolucion = '';

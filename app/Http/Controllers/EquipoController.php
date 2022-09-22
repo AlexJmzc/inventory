@@ -62,9 +62,13 @@ class EquipoController extends Controller
             ->get();
 
         $programas = DB::table('programas')
-            ->select('Nombre', 'Secuencial', 'Version')
+            ->select('Nombre', 'Secuencial', 'Version', 'Descripcion')
             ->get();
 
+            // $programas = DB::table('programas')
+            // ->where('Descripcion','=','Sistema Operativo')
+            // ->select('Nombre', 'Secuencial', 'Version', 'Descripcion')
+            // ->get();
 
         $equipo = new Equipo();
         return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
@@ -181,17 +185,9 @@ class EquipoController extends Controller
 
 
             // programas
-            if (!empty($request->listaProgramas)) {
-                foreach ($request->listaProgramas as $item) {
-                    $programas = new Programaequipo();
-                    $programas->SecuencialEquipo = $secEquipo->Secuencial;
-                    $programas->SecuencialPrograma = $item;
-                    $programas->Bits = 1;
-                    $programas->Licencia=1;
-                    $programas->Activo=1;
-                    $programas->save();
-                }
-            }
+            self::programasEquipo($request->listaProgramas, $secEquipo,$request->itemPrograma);
+            self::programasEquipo($request->listaProgramasOfimatica, $secEquipo,$request->itemPrograma);
+
 
             DB::commit();
         } catch (\Exception $e) {
@@ -206,6 +202,25 @@ class EquipoController extends Controller
         return redirect()->route('equipos.index')
             ->with('success', 'Equipo agregado correctamente');
     }
+
+    public function programasEquipo($lista, $secEquipo, $bits)
+    {
+        if (!empty($lista) && !empty($bits)) {
+            foreach ($lista as $item) {
+                foreach($bits as $b){
+                    $programas = new Programaequipo();
+                    $programas->SecuencialEquipo = $secEquipo->Secuencial;
+                    $programas->SecuencialPrograma = $item;
+                    $programas->Bits = $b;
+                    $programas->Licencia=$b;
+                    $programas->Activo=$b;
+                    $programas->save();
+                }
+
+            }
+        }
+    }
+
 
     public function AgregarAccesorio($modelo, $marca, $serie, $descripcion, $tipo, $codigo)
     {

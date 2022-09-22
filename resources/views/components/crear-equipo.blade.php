@@ -4,7 +4,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="http://localhost/inventory/resources/js/form-dinamico.js"></script>
-<link rel="stylesheet" href="http://localhost/inventory/resources/css/form-dinamico.css">
+<!-- <link rel="stylesheet" href="http://localhost/inventory/resources/css/form-dinamico.css"> -->
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
@@ -323,11 +323,113 @@
             <h2 class="mb-3">Paso 5: Programas</h2>
 
             <div class="list-group mb-3">
-                @foreach ($programas as $programa)
-                <label class="list-group-item">
-                    <input name="listaProgramas[]" class="form-check-input me-1" type="checkbox" value="{{ $programa->Secuencial}}">
-                    {{ $programa->Nombre}} {{$programa->Version}}
+                <p class="h4 mt-3 mb-3 m-auto">Sistema Operativo</p>
+                <label class="list-group-item d-flex justify-content-evenly">
+                    &nbsp
+                    <strong class="m-auto" style="width: 4cm;"> Programa </strong>
+                    &nbsp
+                    <strong class="m-auto">Bits</strong>
+                    &nbsp
+                    <strong class="m-auto"> Licenciado </strong>
+                    &nbsp
+                    <strong class="m-auto"> Activado</strong>
+                    &nbsp
                 </label>
+                @foreach ($programas as $programa)
+                @if ($programa->Descripcion == "SISTEMA OPERATIVO")
+                <label class="list-group-item d-flex justify-content-evenly" id="itemSO[]">
+                    <div style="width: 4cm;">
+                        <input name="listaProgramas[]" class="form-check-input me-1" type="radio" value="{{ $programa->Secuencial}}">
+                        {{ $programa->Nombre}} {{$programa->Version}}
+                    </div>
+                    &nbsp
+                    <div>
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="radio" value="1">
+                        32
+                        &nbsp
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="radio" value="2">
+                        64
+                    </div>
+                    &nbsp
+                    <div>
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+
+                    </div>
+                    &nbsp
+                    <div>
+                        <input id="itemPrograma[]" name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                    </div>
+                    &nbsp
+                </label>
+
+                @endif
+                @endforeach
+
+
+
+                <p class="h4 mt-3 mb-3 m-auto">Ofimatica</p>
+                <label class="list-group-item d-flex justify-content-evenly">
+                    &nbsp
+                    <strong class="m-auto" style="width: 4cm;"> Programa </strong>
+                    &nbsp
+                    <strong class="m-auto"> Licenciado </strong>
+                    &nbsp
+                    <strong class="m-auto"> Activado</strong>
+                    &nbsp
+                </label>
+                @foreach ($programas as $programa)
+                @if ($programa->Descripcion == "OFIMATICA")
+                <label class="list-group-item d-flex justify-content-evenly" >
+                    <div style="width: 4cm;" class="m-auto">
+                        <input name="listaProgramasOfimatica[]" class="form-check-input me-1" type="radio" value="{{ $programa->Secuencial}}">
+                        {{ $programa->Nombre}} {{$programa->Version}}
+                    </div>
+                    &nbsp
+                    <div class="m-auto">
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+
+                    </div>
+                    &nbsp
+                    <div class="m-auto">
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                    </div>
+                    &nbsp
+                </label>
+                @endif
+                @endforeach
+
+                <p class="h4 mt-3 mb-3 m-auto">Otros</p>
+                <label class="list-group-item d-flex justify-content-evenly">
+                    &nbsp
+                    <strong class="m-auto" style="width: 4cm;"> Programa </strong>
+                    &nbsp
+
+                    <strong class="m-auto"> Licenciado </strong>
+                    &nbsp
+                    <strong class="m-auto"> Activado</strong>
+                    &nbsp
+                </label>
+
+                @foreach ($programas as $programa)
+                @if ($programa->Descripcion == NULL)
+                <label class="list-group-item d-flex justify-content-evenly">
+                    <div style="width: 4cm;" class="m-auto">
+                        <input name="listaProgramas[]" class="form-check-input" type="checkbox" value="{{ $programa->Secuencial}}">
+                        {{ $programa->Nombre}}
+                    </div>
+                    &nbsp
+                    <div class="m-auto">
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+
+                    </div>
+                    &nbsp
+                    <div class="m-auto">
+                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                    </div>
+                    &nbsp
+
+                </label>
+                @endif
                 @endforeach
             </div>
            

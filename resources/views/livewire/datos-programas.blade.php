@@ -1,14 +1,25 @@
 <div class="container text-center">
-    <div class="row">
-        <div class="col  mb-5 mt-5">
+    <div class="d-flex">
+        <div class="p-2 flex-grow-1">
             <h3><span class="badge bg-secondary">{{$programas[0] -> NombreEquipo}}</span></h3>
         </div>
+
+        <div class="p-2">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+                Añadir
+            </button>
+        </div>
     </div>
+    
     <div class="row">
-        @foreach($programas as  $programa)
+        @foreach($programas as $programa)
         <div class="col">
             <div class="card border-success mb-3">
-                <div class="card-header bg-success text-center"  style="color:white;">
+                <div class="card-header bg-success text-center" style="color:white;">
                     {{ $programa -> Programa }}
                 </div>
                 <ul class="list-group list-group-flush">
@@ -23,22 +34,61 @@
                     <li class="list-group-item">
                         <h6>LICENCIA:</h6>
                         @if($programa -> Licencia == 1)
-                            <h8>SI</h8>
+                        <h8>SI</h8>
                         @else
-                            <h8>NO</h8>
+                        <h8>NO</h8>
                         @endif
                     </li>
                     <li class="list-group-item">
                         <h6>ACTIVO:</h6>
                         @if($programa -> Activo == 1)
-                            <h8>SI</h8>
+                        <h8>SI</h8>
                         @else
-                            <h8>NO</h8>
-                        @endif     
+                        <h8>NO</h8>
+                        @endif
                     </li>
-                </ul>             
+                </ul>
             </div>
         </div>
         @endforeach
     </div>
+
+    <!-- Modal -->
+
+    <div>
+        <div class="modal fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Accesorio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="g-3" method="POST" action="{{ route('software.store')}}">
+                            @csrf
+                            <div class="list-group mb-3">
+                                @foreach ($listaProgramas as $programa)
+                                <label class="list-group-item d-flex justify-content-start">
+                                    <input name="listaProgramasNuevo[]" class="form-check-input me-1" type="checkbox" value="{{ $programa->Secuencial}}">
+                                    {{ $programa->Nombre}} {{$programa->Version}}
+                                </label>
+                                @endforeach
+                            </div>
+
+                            <input type="hidden" name="inputNombreEquipoProgramas" value="{{ $programas[0] -> NombreEquipo }}">
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

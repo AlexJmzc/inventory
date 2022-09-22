@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\AccesorioController;
+use App\Http\Livewire\DatosProgramas;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\AccesorioController;
 Route::resource('/equipos', EquipoController::class);
 
 Route::resource('/accesorios', AccesorioController::class);
+
+Route::resource('/software', DatosProgramas::class);
+
 
 //Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');
 

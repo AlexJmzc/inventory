@@ -322,38 +322,6 @@
         <fieldset>
             <h2 class="mb-3">Paso 5: Programas</h2>
 
-            <!-- <div class="row g-2 justify-content-around">
-                <div class="col-md form-floating m-auto">
-                    <select name="programasEleccion" id="programasEleccion" class="form-select" multiple size="8">
-
-                        <option selected value="">Elegir</option>
-                        @foreach ($programas as $programa)
-                        <option value="{{$programa-> Nombre}} {{$programa->Version}}"> {{ $programa->Nombre}} {{$programa->Version}}</option>
-                        @endforeach
-                    </select>
-                    <label for="programasEleccion" class="form-label">Programas</label>
-                </div>
-
-                <div class="col-md-2 align-self-center ">
-                    <div class="row justify-content-center">
-                        <button class="btn btn-success mb-3" type="button" id="newPrograma" style="width: 50%;">Agregar</button>
-                    </div>
-                </div>
-
-                <div class="col-md">
-                    <label for="programasElejidos" class="form-label">Programas Seleccionados</label>
-                    <ol id="listaProgramas" class="list-group list-group-numbered">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="fw-bold m-auto">Office 365</div>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                </svg>
-                            </button>
-                        </li>
-                    </ol>
-                </div>
-            </div> -->
             <div class="list-group mb-3">
                 @foreach ($programas as $programa)
                 <label class="list-group-item">
@@ -362,30 +330,7 @@
                 </label>
                 @endforeach
             </div>
-            <!--<button type="button" id='botonL'>M</button>
-
-            <ul id='lista' class="list-group"></ul>
-            <script>
-                var boton = document.getElementById('botonL');
-                var lista = document.getElementById('lista');
-                var checks = document.querySelectorAll('.form-check-input');
-
-                boton.addEventListener('click', function(){
-                    lista.innerHTML = '';
-                    var programasEquipo = [];
-                    checks.forEach((e)=>{
-                        if(e.checked == true){
-                            var elemento = document.createElement('li');
-                            elemento.className = 'list-group-item';
-                            elemento.innerHTML = e.value;
-                            programasEquipo.push(e.value);
-                            lista.appendChild(elemento);
-                        }
-                        
-                    });
-                    console.log(programasEquipo);
-                });
-            </script>-->
+           
 
             <input type="button" name="previous" class="previous btn btn-light" value="Previo" />
             <input type="button" name="next" class="next btn btn-danger" value="Siguiente" />

@@ -92,6 +92,7 @@ class AccesorioController extends Controller
         return view('livewire.principal', compact('equipo', 'nombre'));
     }
 
+
     public function AgregarDetalle($cedulaDetalle, $codigo, $date,$secEquipo)
     {
         $acces = DB::table('accesorios as a')
@@ -138,7 +139,7 @@ class AccesorioController extends Controller
      * @param  \App\Models\Accesorio  $accesorio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accesorio $accesorio)
+    public function update(Request $request)
     {
         //
     }

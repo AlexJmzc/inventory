@@ -9,7 +9,10 @@ class DatosAccesorios extends Component
 {
 
     public $aux;
+    
 
+    
+    
     public function mount($auxiliar){
         $this->aux = $auxiliar;
     }

@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\AccesorioController;
 use App\Http\Livewire\DatosProgramas;
+use App\Http\Livewire\DatosNetwork;
+use App\Http\Livewire\DatosEquipo;
+use App\Http\Livewire\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +26,10 @@ Route::resource('/equipos', EquipoController::class);
 Route::resource('/accesorios', AccesorioController::class);
 
 Route::resource('/software', DatosProgramas::class);
+
+Route::resource('/network', DatosNetwork::class);
+
+Route::resource('/equipo', DatosEquipo::class);
 
 
 //Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');

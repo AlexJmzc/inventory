@@ -337,35 +337,32 @@
                 </label>
                 @foreach ($programas as $programa)
                 @if ($programa->Descripcion == "SISTEMA OPERATIVO")
-                <label class="list-group-item d-flex justify-content-evenly" id="itemSO[]">
+                <label class="list-group-item d-flex justify-content-evenly">
                     <div style="width: 4cm;">
                         <input name="listaProgramas[]" class="form-check-input me-1" type="radio" value="{{ $programa->Secuencial}}">
                         {{ $programa->Nombre}} {{$programa->Version}}
                     </div>
                     &nbsp
                     <div>
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="radio" value="1">
+                        <input name="itemBits" class="form-check-input me-1" type="radio" value="1" >
                         32
                         &nbsp
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="radio" value="2">
+                        <input name="itemBits" class="form-check-input me-1" type="radio" value="2" default="0">
                         64
                     </div>
                     &nbsp
-                    <div>
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
-
+                    <div name="">
+                        <input name="itemSO[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                     <div>
-                        <input id="itemPrograma[]" name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemSO[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                 </label>
 
                 @endif
                 @endforeach
-
-
 
                 <p class="h4 mt-3 mb-3 m-auto">Ofimatica</p>
                 <label class="list-group-item d-flex justify-content-evenly">
@@ -386,12 +383,12 @@
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemOfimatica[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
 
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemOfimatica[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                 </label>
@@ -414,17 +411,17 @@
                 @if ($programa->Descripcion == NULL)
                 <label class="list-group-item d-flex justify-content-evenly">
                     <div style="width: 4cm;" class="m-auto">
-                        <input name="listaProgramas[]" class="form-check-input" type="checkbox" value="{{ $programa->Secuencial}}">
+                        <input name="listaProgramasOtros[]" class="form-check-input" type="checkbox" value="{{ $programa->Secuencial}}">
                         {{ $programa->Nombre}}
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemOtros[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
 
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemPrograma[]" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemOtros[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
 

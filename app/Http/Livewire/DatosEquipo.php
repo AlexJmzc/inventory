@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Equipo;
 
 class DatosEquipo extends Component
 {
@@ -55,5 +57,38 @@ class DatosEquipo extends Component
         
         
         return $disco2;
+    }
+
+    public function update(Request $request)
+    {
+       
+        $secEquipo = $request -> inputSecuencial;
+
+        $equipo = DB::table("equipos as e")
+        ->where('e.Secuencial', '=', $secEquipo)
+        ->select("e.Secuencial")
+        ->first();
+        
+        $nombre = 'datos-equipo';
+        $equipoActualizar = Equipo::find($secEquipo);
+
+        $equipoActualizar -> CedulaResponsable = $request -> Responsable;
+        $equipoActualizar -> Codigo = $request -> inputCodigo;
+        $equipoActualizar -> SecuencialTipoEquipo = $request -> inputTipo;
+        $equipoActualizar -> MarcaEquipo = $request -> MarcaEquipo;
+        $equipoActualizar -> Modelo = $request -> inputModelo;
+        $equipoActualizar -> Serie = $request -> inputSerie;
+        $equipoActualizar -> Observacion = $request -> inputObservacion;
+        $equipoActualizar -> ProcesadorSecuencial = $request -> Procesador;
+        $equipoActualizar -> CapacidadMemoria = $request -> inputMemoria;
+        $equipoActualizar -> MarcaDisco1 = $request -> MarcaDisco1;
+        $equipoActualizar -> CapacidadDisco1 = $request -> inputCapacidadDisco1;
+        $equipoActualizar -> MarcaDisco2 = $request -> MarcaDisco2;
+        $equipoActualizar -> CapacidadDisco2 = $request -> inputCapacidadDisco2;
+
+        $equipoActualizar->save();
+        
+
+        return view('livewire.principal', compact('equipo', 'nombre'));
     }
 }

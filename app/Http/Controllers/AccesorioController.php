@@ -27,7 +27,7 @@ class AccesorioController extends Controller
         ->orderBy("a.Secuencial", "desc")
         ->get();
         
-        return view('components.crear-accesorio', compact('tipo'));
+        return view('livewire.principal', compact('tipo'));
 
     }
 
@@ -118,7 +118,7 @@ class AccesorioController extends Controller
     public function show($id)
     {
         
-
+        
     }
 
     /**
@@ -127,9 +127,11 @@ class AccesorioController extends Controller
      * @param  \App\Models\Accesorio  $accesorio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accesorio $accesorio)
+    public function edit($id)
     {
-        //
+        $accesorio = Equipo::find($id);
+
+        return view('detalleequipos', compact('equipo'));
     }
 
     /**
@@ -141,7 +143,27 @@ class AccesorioController extends Controller
      */
     public function update(Request $request)
     {
-        //
+       
+        $secAccesorio = $request -> inputSecuencial;
+        $equipo = DB::table('detalle as de')
+            ->where('de.AccesoriosSecuencial', '=', $secAccesorio)
+            ->join('equipos as e', 'e.Secuencial','=','de.EquipoSecuencial')
+            ->select("e.Secuencial")
+            ->first();
+        
+        
+        $nombre = 'datos-accesorios';
+        $accesorioActualizar = Accesorio::find($secAccesorio);
+
+        $accesorioActualizar -> Codigo = $request -> inputCodigo;
+        $accesorioActualizar -> Marca = $request -> MarcaAccesorio;
+        $accesorioActualizar -> Serie = $request -> inputSerie;
+        $accesorioActualizar -> Modelo = $request -> inputModelo;
+        $accesorioActualizar -> Descripcion = $request -> inputDescripcion;
+        
+        $accesorioActualizar->save();
+
+        return view('livewire.principal', compact('equipo', 'nombre'));
     }
 
     /**

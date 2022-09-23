@@ -31,6 +31,9 @@
                         <h6>DIRECCION MAC:</h6>
                         <h8>{{ $network[0] -> DireccionMAC }}</h8>
                     </li>
+                    
+                        
+                   
                 </ul>             
             </div>
         </div>
@@ -59,5 +62,16 @@
                 </ul>             
             </div>
         </div>
+    </div>
+    <div class="container text-center mt-4">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-outline-success" style="width:50%" data-bs-toggle="modal" data-bs-target="#editFormNetwork">Editar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal" id="editFormNetwork" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
+              @livewire('editar-network', ['nom' => $network[0] -> Nombre])
     </div>
 </div>

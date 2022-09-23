@@ -10,18 +10,9 @@ class Observaciones extends Component
 
     public $secuencialAccesorio;
 
-    /*public function mount($secuencial){
+    public function mount($secuencial){
         $this -> secuencialAccesorio = $secuencial; 
-    }*/
-
-    /*public function __construct(Request $request){
-        $this -> secuencialAccesorio = $request -> secuencial;
-        dd($request);
-    }*/
-
-    /*public function boot($secuencial){
-       $this -> secuencialAccesorio = $secuencial;
-    } */
+    }
 
 
     public function render()
@@ -32,6 +23,8 @@ class Observaciones extends Component
         ->join('tipoaccesorio as tipo', 'a.SecuencialTipoAccesorio', '=', 'tipo.Secuencial')
         ->select('o.Descripcion','tipo.Nombre', 'a.Codigo')
         ->get();
+
+                
         
         return view('livewire.observaciones', compact('observaciones'));
     }

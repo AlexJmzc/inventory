@@ -80,7 +80,7 @@
             <div class="container text-center">
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn btn-outline-secondary" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasRight">Observaciones</button>
+                    <button type="button" class="btn btn-outline-secondary" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
                   </div>
                   <div class="col">
                     <button type="button" class="btn btn-outline-success" style="width:100%" data-bs-toggle="modal" data-bs-target="#editForm{{ $loop->iteration }}">Editar</button>
@@ -94,12 +94,18 @@
       </div>
       
     </div>
-    <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
-            @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
-  </div>
+    
     @endforeach
   </div>
-  
+  @foreach($accesorios as $accesorio)
+    <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
+        @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
+    </div>
+    
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom{{ $loop->iteration }}" aria-labelledby="offcanvasBottomLabel">
+        @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
+    </div>
+  @endforeach
  
   
   <!-- Modal Agregar-->

@@ -125,7 +125,6 @@
             </div>
         </div>
     </div>
-    <div class="container text-center mt-4">
         <div class="row">
             <div class="col">
                 <button type="button" class="btn btn-outline-success" style="width:30%" data-bs-toggle="modal" data-bs-target="#editFormEquipo">Editar</button>

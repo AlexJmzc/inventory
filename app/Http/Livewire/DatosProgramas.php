@@ -40,7 +40,7 @@ class DatosProgramas extends Component
 
 
         $listaProgramas = DB::table('programas')
-            ->where('Descripcion', '<>', 'SISTEMA OPERATIVO')
+            ->where('Descripcion', '=', '')
             ->select('Nombre', 'Secuencial', 'Version')
             ->get();
         return view('livewire.datos-programas', compact('programas', 'listaProgramas'));
@@ -70,9 +70,15 @@ class DatosProgramas extends Component
                     $programa = new Programaequipo();
                     $programa->SecuencialPrograma = $item;
                     $programa->SecuencialEquipo = $equipo->Secuencial;
-                    $programa->Bits = 1;
                     $programa->Licencia = 1;
                     $programa->Activo = 1;
+                    if (!empty($request->itemBitsP)) {
+                        foreach ($request->itemBitsP as $bit) {
+                            $programa->Bits = $bit;
+                        }
+                    } 
+
+
                     $programa->save();
                 }
             }

@@ -4,7 +4,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="http://localhost/inventory/resources/js/form-dinamico.js"></script>
-<!-- <link rel="stylesheet" href="http://localhost/inventory/resources/css/form-dinamico.css"> -->
+<link rel="stylesheet" href="http://localhost/inventory/resources/css/form-dinamico.css">
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
@@ -135,7 +135,7 @@
                         <label for="inputMarcaDisco" class="form-label">Marca del Disco</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" name="capacidadDisco2" placeholder="RAM"></input>
+                        <input id="disco2" class="form-control" name="capacidadDisco2" placeholder="RAM"></input>
                         <label for="discos">Capacidad Disco</label>
                     </div>
                 </div>
@@ -286,7 +286,7 @@
 
                 <div class="row g-2">
                     <div class="col-md form-floating mb-3">
-                        <input class="form-control" name="codigoParlantes" placeholder="Parlantes"></input>
+                        <input id="codigoParlantes" class="form-control" name="codigoParlantes" placeholder="Parlantes"></input>
                         <label for="Parlantes">Código</label>
                     </div>
 
@@ -301,11 +301,11 @@
                     </div>
 
                     <div class="col-md form-floating mb-3">
-                        <input class="form-control" name="serieParlantes" placeholder="Parlantes"></input>
+                        <input id="serieParlantes" class="form-control" name="serieParlantes" placeholder="Parlantes"></input>
                         <label for="Parlantes">Serie</label>
                     </div>
                     <div class="col-md-12 form-floating mb-3">
-                        <textarea class="form-control" name="inputDescripcionParlante" rows="2"></textarea>
+                        <textarea id="inputDescripcionParlante" class="form-control" name="inputDescripcionParlante" rows="2"></textarea>
                         <label for="inputDescripcionParlante" class="form-label">Descripción</label>
                     </div>
 
@@ -343,20 +343,20 @@
                         {{ $programa->Nombre}} {{$programa->Version}}
                     </div>
                     &nbsp
-                    <div>
+                   <div>
                         <input name="itemBits" class="form-check-input me-1" type="radio" value="1" >
                         32
                         &nbsp
                         <input name="itemBits" class="form-check-input me-1" type="radio" value="2" default="0">
                         64
-                    </div>
+                    </div> 
                     &nbsp
                     <div name="">
                         <input name="itemSO[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                     <div>
-                        <input name="itemSO[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemActivacionSO[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                 </label>
@@ -388,7 +388,7 @@
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemOfimatica[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemActivacionOfimatica[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
                 </label>
@@ -421,7 +421,7 @@
                     </div>
                     &nbsp
                     <div class="m-auto">
-                        <input name="itemOtros[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
+                        <input name="itemActivacionOtros[]{{$loop->iteration}}" class="form-check-input me-1" type="checkbox" value="1">
                     </div>
                     &nbsp
 

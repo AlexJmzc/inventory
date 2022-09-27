@@ -44,4 +44,8 @@
 </body>
     
 
+<footer style="margin-top: 50px;">
+    <x-footer ></x-footer>
+</footer>
+
 </html>

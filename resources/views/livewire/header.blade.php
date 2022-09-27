@@ -11,7 +11,7 @@
 
 
     <div class="d-flex">
-      <a class="me-2" href="#" style="text-decoration: none;color:black">Inicio</a>
+      <a href="{{route('equipos.index')}}" class="me-2" href="#" style="text-decoration: none;color:black">Inicio</a>
     </div>
 
   </div>

@@ -46,7 +46,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <div class="d-flex">
-                            <a id="op" class="me-2" href="#" style="color:black;">Inicio</a>
+                            <a href="{{route('equipos.index')}}" id="op" class="me-2" href="#" style="color:black;">Inicio</a>
                         </div>
 
                         <!-- Authentication Links -->

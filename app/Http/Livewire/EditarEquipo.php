@@ -20,7 +20,8 @@ class EditarEquipo extends Component
         ->where('e.Nombre','=', $this -> nombreEquipo)
         ->select('e.Nombre', 'e.Codigo', 'e.MarcaEquipo', 'e.Modelo', 'e.Serie', 'e.Observacion',
                  'e.ProcesadorSecuencial', 'e.CapacidadMemoria', 'e.MarcaDisco1', 'e.CapacidadDisco1',
-                 'e.MarcaDisco2', 'e.CapacidadDisco2', 'e.Secuencial')
+                 'e.MarcaDisco2', 'e.CapacidadDisco2', 'e.Secuencial', 'e.CedulaResponsable',
+                 'e.SecuencialTipoEquipo')
         ->first();
 
         $procesadores = DB::table('procesador as p')

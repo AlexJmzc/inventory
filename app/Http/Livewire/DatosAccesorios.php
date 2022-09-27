@@ -19,6 +19,10 @@ class DatosAccesorios extends Component
 
     public function render()
     {
+        $equipo = DB::table('equipos as e')
+        ->where('e.Secuencial', '=', $this -> aux)
+        ->select('e.Nombre')
+        ->first();
 
         $accesorios = DB::table('Detalle as de')
         ->where('de.EquipoSecuencial', '=', $this -> aux)
@@ -36,7 +40,10 @@ class DatosAccesorios extends Component
                  'tipo.EntradaSalida', 'a.Descripcion as DescripcionAccesorio', 'e.Nombre as NombreEquipo',
                  'a.Secuencial as SecuencialAccesorio')
         ->get();
-
+        if($accesorios -> isEmpty()){
+            $accesorios = null;
+        }
+        
         $tipo = DB::table('tipoaccesorio')
         ->select("Nombre", "Secuencial")
         ->get();
@@ -45,6 +52,6 @@ class DatosAccesorios extends Component
         ->select("Nombre", "Secuencial")
         ->get();
 
-        return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas'));
+        return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas','equipo'));
     }
 }

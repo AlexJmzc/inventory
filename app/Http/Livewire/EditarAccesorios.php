@@ -16,7 +16,8 @@ class EditarAccesorios extends Component
         $accesorio = DB::table("accesorios as a")
         ->where('a.Secuencial','=', $this -> sec)
         ->join('tipoaccesorio as tipo', 'a.SecuencialTipoAccesorio', '=', 'tipo.Secuencial')
-        ->select('a.Codigo','a.Modelo', 'a.Serie','a.Descripcion', 'tipo.Nombre as Tipo', 'a.Secuencial')
+        ->select('a.Codigo','a.Modelo', 'a.Serie','a.Descripcion', 'tipo.Nombre as Tipo', 'a.Secuencial',
+                 'a.Marca')
         ->first();
 
         $marcas = DB::table('marca as m')

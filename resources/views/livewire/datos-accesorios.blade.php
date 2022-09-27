@@ -1,7 +1,7 @@
 <div class="container text-center">
   <div class="d-flex mb-4">
     <div class="p-2 flex-grow-1">
-      <h3><span class="badge bg-secondary">{{$accesorios[0] -> NombreEquipo}}</span></h3>
+      <h3><span class="badge bg-secondary">{{$equipo -> Nombre}}</span></h3>
     </div>
 
     <div class="p-2">
@@ -18,14 +18,15 @@
 
 
 
+@if($accesorios == null)
 
-  <div class="row">
+@else
+<div class="row">
     @foreach($accesorios as $accesorio)
     <div class="col">
       <div class="card border-success mb-3">
         <div class="card-header bg-success text-center" style="color:white;">
           {{ $accesorio -> TipoAccesorio }}
-          {{$accesorio -> SecuencialAccesorio}}
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -106,6 +107,8 @@
         @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
     </div>
   @endforeach
+@endif
+  
  
   
   <!-- Modal Agregar-->
@@ -159,7 +162,7 @@
                 <textarea class="form-control" name="inputDescripcion" rows="2"></textarea>
               </div>
 
-              <input type="hidden" name="inputNombreEquipo" value="{{ $accesorios[0]->NombreEquipo }}">
+              <input type="hidden" name="inputNombreEquipo" value="{{ $equipo->Nombre }}">
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>

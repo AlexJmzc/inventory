@@ -1,7 +1,7 @@
 <div class="container text-center">
     <div class="d-flex">
         <div class="p-2 flex-grow-1">
-            <h3><span class="badge bg-secondary">{{$programas[0] -> NombreEquipo}}</span></h3>
+            <h3><span class="badge bg-secondary">{{$equipo -> Nombre}}</span></h3>
         </div>
 
         <div class="p-2">
@@ -15,6 +15,9 @@
         </div>
     </div>
 
+@if($programas == null)
+
+@else
     <div class="row">
         @foreach($programas as $programa)
         <div class="col">
@@ -52,7 +55,8 @@
         </div>
         @endforeach
     </div>
-
+@endif
+    
     <!-- Modal -->
 
     <div>
@@ -91,7 +95,7 @@
                                 @endforeach
                             </div>
 
-                            <input type="hidden" name="inputNombreEquipoProgramas" value="{{ $programas[0] -> NombreEquipo }}">
+                            <input type="hidden" name="inputNombreEquipoProgramas" value="{{ $equipo -> Nombre }}">
 
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>

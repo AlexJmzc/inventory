@@ -13,7 +13,11 @@
                 <select name="Responsable" id="Responsable" class="form-select">
                   <option selected value="">Elegir</option>
                     @foreach ($responsables as $responsable)
-                    <option value="{{ $responsable -> Cedula }}"> {{ $responsable -> NombreCompleto }} </option>
+                      @if($responsable -> Cedula == $equipo -> CedulaResponsable)
+                        <option value="{{ $responsable -> Cedula }}" selected="selected"> {{ $responsable -> NombreCompleto }} </option>
+                      @else
+                        <option value="{{ $responsable -> Cedula }}"> {{ $responsable -> NombreCompleto }} </option>
+                      @endif
                     @endforeach
                 </select>
               </div>
@@ -23,13 +27,18 @@
                 <input type="text" class="form-control" name="inputCodigo" value="{{ $equipo -> Codigo }}"></input>
               </div>
 
-              <div class="col-md form-floating mb-3">
-                    <select name="inputTipo" id="inputTipo" class="form-select">
-                        <option selected value="">Elegir</option>
-                        <option value="1"> ESCRITORIO </option>
+              <div class="col-md-4 mb-3">
+                <label for="inputTipo" class="form-label">Tipo</label>
+                  <select name="inputTipo" id="inputTipo" class="form-select">
+                      <option selected value="">Elegir</option>
+                      @if($equipo -> SecuencialTipoEquipo == 1)
+                        <option value="1" selected="selected"> ESCRITORIO </option>
                         <option value="2"> PORTATIL </option>
-                    </select>
-                    <label for="inputTipo" class="form-label">Tipo</label>
+                      @else
+                        <option value="1"> ESCRITORIO </option>
+                        <option value="2" selected="selected"> PORTATIL </option>
+                      @endif
+                  </select>
               </div>
 
               <div class="col-md-4 mb-3">
@@ -37,7 +46,11 @@
                 <select name="MarcaEquipo" id="MarcaEquipo" class="form-select">
                   <option selected value="">Elegir</option>
                     @foreach ($marcas as $marca)
-                    <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                      @if($marca -> Secuencial == $equipo -> MarcaEquipo)
+                        <option value="{{ $marca -> Secuencial }}" selected="selected"> {{ $marca ->Nombre }} </option>
+                      @else
+                        <option value="{{ $marca -> Secuencial }}"> {{ $marca ->Nombre }} </option>
+                      @endif
                     @endforeach
                 </select>
               </div>
@@ -62,7 +75,11 @@
                 <select name="Procesador" id="Procesador" class="form-select">
                   <option selected value="">Elegir</option>
                     @foreach ($procesadores as $procesador)
-                    <option value="{{ $procesador -> Secuencial }}"> {{ $procesador -> NombreProcesador }} </option>
+                      @if($procesador -> Secuencial == $equipo -> ProcesadorSecuencial)
+                        <option value="{{ $procesador -> Secuencial }}" selected="selected"> {{ $procesador -> NombreProcesador }} </option>
+                      @else
+                        <option value="{{ $procesador -> Secuencial }}"> {{ $procesador -> NombreProcesador }} </option>
+                      @endif
                     @endforeach
                 </select>
               </div>
@@ -82,7 +99,11 @@
                 <select name="MarcaDisco1" id="MarcaDisco1" class="form-select">
                   <option selected value="">Elegir</option>
                   @foreach ($marcas as $marca)
-                  <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                    @if($marca -> Secuencial == $equipo -> MarcaDisco1)
+                      <option value="{{ $marca->Secuencial }}" selected="selected"> {{ $marca ->Nombre }} </option>
+                    @else
+                      <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                    @endif
                   @endforeach
                 </select>
               </div>
@@ -97,7 +118,6 @@
                     @endforeach
                     </select>
                 </div>
-
                 <div class="col-md-4">
                     <label for="inputCapacidadDisco2" class="form-label">Disco 2</label>
                     <input type="text" class="form-control" name="inputCapacidadDisco2" value=""></input>
@@ -108,11 +128,14 @@
                     <select name="MarcaDisco2" id="MarcaDisco2" class="form-select">
                     <option selected value="">Elegir</option>
                     @foreach ($marcas as $marca)
-                    <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                      @if($marca -> Secuencial == $equipo -> MarcaDisco2)
+                        <option value="{{ $marca -> Secuencial }}" selected="selected"> {{ $marca ->Nombre }} </option>
+                      @else
+                        <option value="{{ $marca -> Secuencial }}"> {{ $marca ->Nombre }} </option>
+                      @endif
                     @endforeach
                     </select>
                 </div>
-
                 <div class="col-md-4">
                     <label for="inputCapacidadDisco2" class="form-label">Disco 2</label>
                     <input type="text" class="form-control" name="inputCapacidadDisco2" value="{{ $equipo -> CapacidadDisco1 }}"></input>

@@ -27,9 +27,11 @@ Route::resource('/accesorios', AccesorioController::class);
 
 Route::resource('/software', DatosProgramas::class);
 
-Route::resource('/network', DatosNetwork::class);
+Route::group(['middleware' => 'keycloak-web'], function () {
+    Route::get('/');
+});
 
-Route::resource('/equipo', DatosEquipo::class);
+
 
 
 //Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');

@@ -14,7 +14,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="row">
         @foreach($programas as $programa)
         <div class="col">
@@ -60,17 +60,33 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Accesorio</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Programa</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form class="g-3" method="POST" action="{{ route('software.store')}}">
                             @csrf
-                            <div class="list-group mb-3">
+                            <div class="list-group mb-3 d-flex justify-content-between">
+                                <label class="list-group-item d-flex justify-content-between">
+                                    &nbsp
+                                    <strong class="m-auto" style="width: 4cm;"> Programa </strong>
+                                    &nbsp
+                                    <strong class="m-auto">Bits</strong>
+                                    &nbsp
+                                </label>
                                 @foreach ($listaProgramas as $programa)
-                                <label class="list-group-item d-flex justify-content-start">
+                                <label class="list-group-item d-flex justify-content-between">
+                                    <div>
                                     <input name="listaProgramasNuevo[]" class="form-check-input me-1" type="checkbox" value="{{ $programa->Secuencial}}">
                                     {{ $programa->Nombre}} {{$programa->Version}}
+                                    </div>
+                                    <div class="">
+                                        <input name="itemBitsP[]{{$loop->iteration}}" class="form-check-input me-1" type="radio" value="1">
+                                        32
+                                        &nbsp
+                                        <input name="itemBitsP[]{{$loop->iteration}}" class="form-check-input me-1" type="radio" value="2" default="0">
+                                        64
+                                    </div>
                                 </label>
                                 @endforeach
                             </div>

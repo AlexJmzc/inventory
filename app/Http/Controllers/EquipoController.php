@@ -186,10 +186,9 @@ class EquipoController extends Controller
 
 
             // programas
-            self::programasEquipo($request->listaProgramas, $secEquipo, $request->itemSO, $request->itemBits);
-            self::programasEquipo($request->listaProgramasOfimatica, $secEquipo, $request->itemOfimatica, $request->itemBits);
-            self::programasEquipo($request->listaProgramasOtros, $secEquipo, $request->itemOtros, $request->itemBits);
-
+            self::programasEquipo($request->listaProgramas, $secEquipo, $request->itemSO, $request->itemActivacionSO,$request->itemBits);
+            self::programasEquipo($request->listaProgramasOtros, $secEquipo, $request->itemOtros, $request->itemActivacionOtros, $request->itemBits);
+            self::programasEquipo($request->listaProgramasOfimatica, $secEquipo, $request->itemOfimatica, $request->itemActivacionOfimatica, $request->itemBits);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -205,7 +204,7 @@ class EquipoController extends Controller
             ->with('success', 'Equipo agregado correctamente');
     }
 
-    public function programasEquipo($lista, $secEquipo, $licencia, $bits)
+    public function programasEquipo($lista, $secEquipo, $licencia,$activacion, $bits)
     {
         if (!empty($lista)) {
             foreach ($lista as $item) {
@@ -216,19 +215,19 @@ class EquipoController extends Controller
 
                 if (empty($licencia)) {
                     $programas->Licencia = 0;
-                    $programas->Activo = 0;
-                    $programas->save();
                     // dd($programas);
-
-
-                } else {
-                        $programas->Licencia = 1;
-                        $programas->Activo = 1;
-                        $programas->save();
-                        // dd($programas);
-                    
-    
+                
+                }else{
+                    $programas->Licencia = 1;
                 }
+                if(empty($activacion)){
+                    $programas->Activo = 0;
+                }else{
+                    $programas->Activo = 1;
+                }
+
+                //dd($programas);
+                $programas->save();
             }
         }
 

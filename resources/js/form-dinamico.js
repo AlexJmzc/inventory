@@ -3,6 +3,10 @@ $(document).ready(function() {
         $('#rowParlantes').show();
     });
     $('#hide').click(function() {
+        document.getElementById("codigoParlantes").value="";
+        document.getElementById("inputMarcaParlantes").value="";
+        document.getElementById("serieParlantes").value="";
+        document.getElementById("inputDescripcionParlante").value="";
         $('#rowParlantes').hide();
     });
 });
@@ -12,7 +16,10 @@ $(document).ready(function() {
         $('#nuevafila').show();
     });
     $('#removeRow').click(function() {
+        document.getElementById("disco2").value = "";
+        document.getElementById('inputMarcaDisco2').value="";
         $('#nuevafila').hide();
+
     });
 });
 
@@ -45,9 +52,9 @@ $(document).ready(function () {
     }
 })
 
-$(document).on('click', '#eliminarItem', function () {
-    $(this).closest('#newItem').remove();
-});
+// $(document).on('click', '#removeRow', function () {
+//     $(this).closest('#nuevafila').remove();
+// });
 
   
 

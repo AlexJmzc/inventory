@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18eaa806ef51feae9d77abfa4f618dbd",
+    "content-hash": "594324f77f3a2add8745a5b2e3d2e184",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5470,16 +5470,16 @@
         },
         {
             "name": "vizir/laravel-keycloak-web-guard",
-            "version": "v2.3.3",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mariovalney/laravel-keycloak-web-guard.git",
-                "reference": "45d295de408a1109d45b10bc0dc7c685dc682c5a"
+                "reference": "fdb778f3068dd16f4b156db9d264adbc45a64676"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mariovalney/laravel-keycloak-web-guard/zipball/45d295de408a1109d45b10bc0dc7c685dc682c5a",
-                "reference": "45d295de408a1109d45b10bc0dc7c685dc682c5a",
+                "url": "https://api.github.com/repos/mariovalney/laravel-keycloak-web-guard/zipball/fdb778f3068dd16f4b156db9d264adbc45a64676",
+                "reference": "fdb778f3068dd16f4b156db9d264adbc45a64676",
                 "shasum": ""
             },
             "require": {
@@ -5521,9 +5521,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mariovalney/laravel-keycloak-web-guard/issues",
-                "source": "https://github.com/mariovalney/laravel-keycloak-web-guard/tree/v2.3.3"
+                "source": "https://github.com/mariovalney/laravel-keycloak-web-guard/tree/v3.0.0"
             },
-            "time": "2022-03-20T17:56:51+00:00"
+            "time": "2022-09-23T14:37:05+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

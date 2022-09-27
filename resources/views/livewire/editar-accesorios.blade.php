@@ -19,7 +19,11 @@
                 <select name="MarcaAccesorio" id="MarcaAccesorio" class="form-select">
                   <option selected value="">Elegir</option>
                   @foreach ($marcas as $marca)
-                  <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                    @if($marca -> Secuencial == $accesorio -> Marca)
+                      <option value="{{ $marca->Secuencial }}" selected="selected"> {{ $marca ->Nombre }} </option>
+                    @else
+                      <option value="{{ $marca->Secuencial }}"> {{ $marca ->Nombre }} </option>
+                    @endif
                   @endforeach
                 </select>
               </div>

@@ -20,6 +20,10 @@ class DatosProgramas extends Component
 
     public function render()
     {
+        $equipo = DB::table('equipos as e')
+            ->where('e.Secuencial','=',$this->aux)
+            ->select('e.Nombre','e.Secuencial')
+            ->first();
 
         $programas = DB::table('programaequipo as pro')
             ->where('pro.SecuencialEquipo', '=', $this->aux)
@@ -38,12 +42,16 @@ class DatosProgramas extends Component
             )
             ->get();
 
+        if($programas -> isEmpty()){
+            $programas = null;
+        }
+
 
         $listaProgramas = DB::table('programas')
             ->where('Descripcion', '<>', 'SISTEMA OPERATIVO')
             ->select('Nombre', 'Secuencial', 'Version')
             ->get();
-        return view('livewire.datos-programas', compact('programas', 'listaProgramas'));
+        return view('livewire.datos-programas', compact('programas', 'listaProgramas','equipo'));
     }
 
     public function create()

@@ -17,6 +17,12 @@ class Observaciones extends Component
 
     public function render()
     {
+        $datos = DB::table('accesorios as a')
+        ->where('a.Secuencial','=',$this -> secuencialAccesorio)
+        ->join('tipoaccesorio as tipo','a.SecuencialTipoAccesorio','=','tipo.Secuencial')
+        ->select('a.Codigo','tipo.Nombre')
+        ->first();
+
         $observaciones = DB::table('Observacion as o')
         ->where('o.AccesoriosSecuencial', '=', $this -> secuencialAccesorio)
         ->join('accesorios as a', 'a.Secuencial', '=', 'o.AccesoriosSecuencial')
@@ -24,8 +30,11 @@ class Observaciones extends Component
         ->select('o.Descripcion','tipo.Nombre', 'a.Codigo')
         ->get();
 
+        if($observaciones -> isEmpty()){
+            $observaciones == null;
+        }
                 
         
-        return view('livewire.observaciones', compact('observaciones'));
+        return view('livewire.observaciones', compact('observaciones','datos'));
     }
 }

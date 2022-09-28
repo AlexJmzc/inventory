@@ -37,7 +37,8 @@ class EquipoController extends Controller
             ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
             ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
             ->orderby('d.NombreDepartamento', 'asc')
-            ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+            ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"),
+                     'e.Nombre', 'e.DireccionIP', 'e.CedulaResponsable', 'r.Codigo as CodigoResponsable')
             ->get();
 
 
@@ -92,6 +93,19 @@ class EquipoController extends Controller
 
         $equipo = new Equipo();
         return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
+    }
+
+    public function createPDF(){
+        $equipos = DB::table('equipos as e')
+        ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
+        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
+        ->orderby('d.NombreDepartamento', 'asc')
+        ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->get();
+        dd($equipos);
+        view() -> share('equipos',$equipos); 
+        $pdf = PDF::loadView('equipos',$equipos);
+        return $pdf->download('equipo-pdf.pdf');
     }
 
     /**

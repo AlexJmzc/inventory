@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Equipo;
+use PDF;
 
 class EquiposTable extends DataTableComponent
 {
@@ -41,5 +42,7 @@ class EquiposTable extends DataTableComponent
     {
         return Equipo::query();
     }
+
+   
 
 }

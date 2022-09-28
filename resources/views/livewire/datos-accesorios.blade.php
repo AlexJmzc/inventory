@@ -81,7 +81,7 @@
             <div class="container text-center">
                 <div class="row">
                   <div class="col">
-                    <button type="button" class="btn btn-outline-secondary" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
+                    <button type="button" class="btn btn-outline-secondary mb-2" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
                   </div>
                   <div class="col">
                     <button type="button" class="btn btn-outline-success" style="width:100%" data-bs-toggle="modal" data-bs-target="#editForm{{ $loop->iteration }}">Editar</button>

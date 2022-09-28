@@ -15,6 +15,7 @@ class Responsable extends Migration
     {
         Schema::create('Responsable', function (Blueprint $table) {
             $table->string('Cedula', 10)->primary();
+            $table->string('Codigo', 50);
             $table->integer('SecuencialDepartamento');
             $table->foreign('SecuencialDepartamento')->references('Secuencial')->on('Departamento');
             $table->string('PrimerNombre', 50);

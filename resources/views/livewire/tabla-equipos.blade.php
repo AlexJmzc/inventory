@@ -24,8 +24,10 @@
             <table id="mytable" class="table dataTables display table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Departamento</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Cedula</th>
                         <th scope="col">Responsable</th>
+                        <th scope="col">Departamento</th>
                         <th scope="col">Nombre Computador</th>
                         <th scope="col">Dirección IP</th>
                         <th scope="col">Acción</th>
@@ -36,8 +38,10 @@
                     @foreach ($equipos as $equipo)
                     <tr>
 
-                        <td>{{ $equipo->NombreDepartamento }}</td>
+                        <td>{{ $equipo->CodigoResponsable }}</td>
+                        <td>{{ $equipo->CedulaResponsable }}</td>
                         <td>{{ $equipo->NombreCompleto }}</td>
+                        <td>{{ $equipo->NombreDepartamento }}</td>
                         <td>{{ $equipo->Nombre }}</td>
                         <td>{{ $equipo->DireccionIP }}</td>
 
@@ -49,9 +53,6 @@
                                     Mostrar
                                 </button>
                             </a>
-                            <!-- <button wire:click="equipos.show({{ $equipo -> Secuencial }}, 'test')">
-                            Add Todo
-                            </button>-->
                         </td>
 
                     </tr>
@@ -60,7 +61,7 @@
 
                 <tfoot>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="10">
                         <div class="d-flex  justify-content-end me-4 ">
                         <a href="{{ route('equipos.create') }}">
                             <button class="btn btn-success">Añadir</button>

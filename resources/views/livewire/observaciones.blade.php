@@ -18,8 +18,7 @@
             @endforeach
         </div>
     @endif
-    
+    <!--<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Añadir
+    </button>-->
 </div>
-
-
-

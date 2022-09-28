@@ -14,6 +14,12 @@
 </div>
 @endif
 
+<a href="{{ route('equipos.pdf')}}" style="text-decoration:none; color:black">
+                                <button name="name" type="submit" class="btn btn-warning">
+                                    PDF
+                                </button>
+                            </a>
+
 
 
 <div class="row d-flex justify-content-center align-items-center" style="width:100%;">

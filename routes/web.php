@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\AccesorioController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Livewire\DatosProgramas;
 use App\Http\Livewire\DatosNetwork;
 use App\Http\Livewire\DatosEquipo;
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'keycloak-web'], function () {
 });
 
 
+Route::get('reportes',[EquipoController::class,'pdf'])->name('equipos.pdf');
 
 
 //Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');

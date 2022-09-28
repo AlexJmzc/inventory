@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Hamcrest\Text\IsEqualIgnoringCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -44,6 +45,24 @@ class EquipoController extends Controller
 
         return view('livewire.tabla-equipos', compact('equipos', 'eq'))
             ->with('i', (request()->input('page', 1) - 1) * $eq->perPage());
+    }
+
+    public function pdf()
+    {
+        $equipos = DB::table('equipos as e')
+        ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
+        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
+        ->orderby('d.NombreDepartamento', 'asc')
+        ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->get();
+
+        $pdf = Pdf::loadView('reportes',['equipos'=>$equipos]);
+       // $pdf->loadHTML('<p>hola</p>');
+        return $pdf -> stream();
+
+        
+        //return view('reportes', compact('equipos'));
+
     }
 
     /**

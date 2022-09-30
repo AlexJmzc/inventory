@@ -7,7 +7,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Livewire\DatosProgramas;
 use App\Http\Livewire\DatosNetwork;
 use App\Http\Livewire\DatosEquipo;
-use App\Http\Livewire\Observacion;
+use App\Http\Livewire\Observaciones;
 use App\Http\Livewire\Request;
 
 
@@ -21,19 +21,19 @@ Route::resource('/software', DatosProgramas::class);
 
 Route::resource('/network', DatosNetwork::class);
 
-Route::resource('/observacion', Observacion::class);
+// Route::resource('/equipo', DatosEquipo::class);
+
+Route::resource('/observacion', Observaciones::class);
 
 
 Route::group(['middleware' => 'keycloak-web'], function () {
-    Route::get('/');
+    Route::get('/', [EquipoController::class, 'index']);
+    //Route::resource('/equipos', EquipoController::class);
+    // Route::get('/equipo', [EquipoController::class, 'index']);
+    Route::get('/equipo', [EquipoController::class, 'index']);
 });
 
-
 Route::get('reportes',[EquipoController::class,'pdf'])->name('equipos.pdf');
-
-
-//Route::get('/equipos/{id}/{name}', EquipoController::class)->name('equipos.ver');
-
 
 Route::get('/ce', function () {
     return view('components.crear-equipo');

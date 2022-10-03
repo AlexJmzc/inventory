@@ -60,6 +60,7 @@ class EquipoController extends Controller
         $pdf = Pdf::loadView('reportes',['equipos'=>$equipos]);
        // $pdf->loadHTML('<p>hola</p>');
         return $pdf -> stream();
+//        return $pdf -> download('reporte.pdf');
 
         
         //return view('reportes', compact('equipos'));

@@ -25,7 +25,7 @@ Route::resource('/observacion', Observacion::class);
 
 
 Route::group(['middleware' => 'keycloak-web'], function () {
-    Route::get('/');
+    Route::get('/');    
 });
 
 

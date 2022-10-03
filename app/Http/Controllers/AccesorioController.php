@@ -129,9 +129,9 @@ class AccesorioController extends Controller
      */
     public function edit($id)
     {
-        $accesorio = Equipo::find($id);
+        //$accesorio = Equipo::find($id);
 
-        return view('detalleequipos', compact('equipo'));
+        //return view('detalleequipos', compact('equipo'));
     }
 
     /**
@@ -165,6 +165,7 @@ class AccesorioController extends Controller
 
         return view('livewire.principal', compact('equipo', 'nombre'));
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -175,6 +176,11 @@ class AccesorioController extends Controller
     public function destroy(Accesorio $accesorio)
     {
         //
+    }
+
+    public function quitar()
+    {
+        
     }
 }
 

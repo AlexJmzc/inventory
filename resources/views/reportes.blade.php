@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HGPT REPORTES</title>
-    <link href="{{ public_path('css/app.css') }}" rel="stylesheet">
+    <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
+
 
 </head>
 <body>

@@ -26,6 +26,7 @@ class DatosAccesorios extends Component
 
         $accesorios = DB::table('Detalle as de')
         ->where('de.EquipoSecuencial', '=', $this -> aux)
+        ->where('de.Activo', '=', 1)
         ->join('Equipos as e', 'e.Secuencial', '=', 'de.EquipoSecuencial')
         ->join('Responsable as res', 'res.Cedula', '=', 'de.ResponsableCedula')
         ->join('Departamento as d', 'd.Secuencial', '=', 'res.SecuencialDepartamento')
@@ -55,4 +56,6 @@ class DatosAccesorios extends Component
 
         return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas','equipo'));
     }
+
+    
 }

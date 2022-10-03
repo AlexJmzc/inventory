@@ -59,6 +59,7 @@ class EquipoController extends Controller
         $pdf->setPaper('A4','landscape');
        
         return $pdf -> stream();
+//        return $pdf -> download('reporte.pdf');
 
     }
 

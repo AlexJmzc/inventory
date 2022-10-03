@@ -18,15 +18,21 @@
 
 
 
-@if($accesorios == null)
+  @if($accesorios == null)
   <p class="h3"> No existe accesorios </p>
-@else
-<div class="row">
+  @else
+  <div class="row">
     @foreach($accesorios as $accesorio)
     <div class="col">
       <div class="card border-success mb-3">
         <div class="card-header bg-success text-center" style="color:white;">
-          {{ $accesorio -> TipoAccesorio }}
+          <div>
+            {{ $accesorio -> TipoAccesorio }}
+          </div>
+            <button class="btn btn-danger" type="button" style="width: max-content;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+              </svg>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -79,38 +85,38 @@
           </li>
           <li class="list-group-item">
             <div class="container text-center">
-                <div class="row">
-                  <div class="col">
-                    <button type="button" class="btn btn-outline-secondary mb-2" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
-                  </div>
-                  <div class="col">
-                    <button type="button" class="btn btn-outline-success" style="width:100%" data-bs-toggle="modal" data-bs-target="#editForm{{ $loop->iteration }}">Editar</button>
-                  </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-outline-secondary mb-2" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
                 </div>
+                <div class="col">
+                  <button type="button" class="btn btn-outline-success" style="width:100%" data-bs-toggle="modal" data-bs-target="#editForm{{ $loop->iteration }}">Editar</button>
+                </div>
+              </div>
             </div>
-            
+
           </li>
         </ul>
-        
+
       </div>
-      
+
     </div>
-    
+
     @endforeach
   </div>
   @foreach($accesorios as $accesorio)
-    <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
-        @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
-    </div>
-    
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom{{ $loop->iteration }}" aria-labelledby="offcanvasBottomLabel">
-        @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
-    </div>
+  <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
+    @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
+  </div>
+
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom{{ $loop->iteration }}" aria-labelledby="offcanvasBottomLabel">
+    @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
+  </div>
   @endforeach
-@endif
-  
- 
-  
+  @endif
+
+
+
   <!-- Modal Agregar-->
   <div>
     <div class="modal fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

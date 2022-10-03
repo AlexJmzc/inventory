@@ -31,6 +31,8 @@ class Detalle extends Migration
 
             $table->string('FechaDevolucion', 50)->nullable();
 
+            $table->tinyInteger('Activo');
+
         });
     }
 

@@ -14,11 +14,22 @@
 </div>
 @endif
 
-<a href="{{ route('equipos.pdf')}}" style="text-decoration:none; color:black">
-                                <button name="name" type="submit" class="btn btn-warning">
-                                    PDF
-                                </button>
-                            </a>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col">
+            <a href="{{ route('equipos.pdf')}}" style="text-decoration:none; color:black">
+                <button name="name" type="submit" class="btn btn-danger" style="color:white;">
+                    PDF
+                </button>
+            </a>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
 
 
 

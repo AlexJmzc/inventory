@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "111e0bb91187565d108211d0f113d410",
+    "content-hash": "8bb4bfc58806d9a4f958695dfe8911c3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2005,16 +2005,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "3.1.42",
+            "version": "3.1.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
-                "reference": "b3938c9a4cf70d01173612fe35e64f31ca830132"
+                "reference": "3c5b95478fb6f76b9a6ab527d54afbb3afbda611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/b3938c9a4cf70d01173612fe35e64f31ca830132",
-                "reference": "b3938c9a4cf70d01173612fe35e64f31ca830132",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/3c5b95478fb6f76b9a6ab527d54afbb3afbda611",
+                "reference": "3c5b95478fb6f76b9a6ab527d54afbb3afbda611",
                 "shasum": ""
             },
             "require": {
@@ -2068,7 +2068,7 @@
             ],
             "support": {
                 "issues": "https://github.com/SpartnerNL/Laravel-Excel/issues",
-                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.42"
+                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.43"
             },
             "funding": [
                 {
@@ -2080,7 +2080,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-28T11:25:11+00:00"
+            "time": "2022-10-03T11:50:29+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -6309,16 +6309,16 @@
         },
         {
             "name": "vizir/laravel-keycloak-web-guard",
-            "version": "v2.3.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Vizir/laravel-keycloak-web-guard.git",
-                "reference": "5965b87a435494a2de3751156d656a325cb23739"
+                "url": "https://github.com/mariovalney/laravel-keycloak-web-guard.git",
+                "reference": "eb30758e4479aadde2a784594e18bf54fe6ae07a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Vizir/laravel-keycloak-web-guard/zipball/5965b87a435494a2de3751156d656a325cb23739",
-                "reference": "5965b87a435494a2de3751156d656a325cb23739",
+                "url": "https://api.github.com/repos/mariovalney/laravel-keycloak-web-guard/zipball/eb30758e4479aadde2a784594e18bf54fe6ae07a",
+                "reference": "eb30758e4479aadde2a784594e18bf54fe6ae07a",
                 "shasum": ""
             },
             "require": {
@@ -6359,10 +6359,10 @@
                 "laravel"
             ],
             "support": {
-                "issues": "https://github.com/Vizir/laravel-keycloak-web-guard/issues",
-                "source": "https://github.com/Vizir/laravel-keycloak-web-guard/tree/v2.3.0"
+                "issues": "https://github.com/mariovalney/laravel-keycloak-web-guard/issues",
+                "source": "https://github.com/mariovalney/laravel-keycloak-web-guard/tree/v3.0.1"
             },
-            "time": "2020-10-30T18:02:33+00:00"
+            "time": "2022-09-28T17:31:42+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

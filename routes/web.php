@@ -31,6 +31,7 @@ Route::resource('/equipo', DatosEquipo::class);
 Route::resource('/observacion', Observaciones::class);
 
 
+
 Route::group(['middleware' => 'keycloak-web'], function () {
     Route::get('/', [EquipoController::class, 'index']);
     //Route::resource('/equipos', EquipoController::class);
@@ -39,6 +40,7 @@ Route::group(['middleware' => 'keycloak-web'], function () {
 });
 
 Route::get('reportes',[EquipoController::class,'pdf'])->name('equipos.pdf');
+
 
 Route::get('/ce', function () {
     return view('components.crear-equipo');

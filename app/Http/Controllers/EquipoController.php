@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Accesorio;
 use App\Models\Detalle;
 use App\Models\Equipo;
+use App\Exports\EquipoExport;
 use App\Models\Programa;
 use App\Models\Programaequipo;
+
 use Carbon\Carbon;
 use Hamcrest\Text\IsEqualIgnoringCase;
 use Illuminate\Http\Request;
@@ -23,13 +25,10 @@ class EquipoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public $name = 'pantalla-equipo';
-    public $acc;
-    public $acc1;
-    public $acc2;
-    public $acc3;
-
+   
     public function index()
     {
+        
         $eq = Equipo::paginate();
 
         $equipos = DB::table('equipos as e')
@@ -55,18 +54,34 @@ class EquipoController extends Controller
         ->orderby('d.NombreDepartamento', 'asc')
         ->select('r.Codigo','r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
         ->get();
-        //dd($equipos);
+       
         $pdf = Pdf::loadView('reportes',['equipos'=>$equipos]);
         $pdf->setPaper('A4','landscape');
        
         return $pdf -> stream();
 //        return $pdf -> download('reporte.pdf');
 
-        
-        //return view('reportes', compact('equipos'));
-
     }
 
+    public function pdfEquipo(Request $request)
+    {
+        $secuencialEq = $request -> Sec;
+        $datos = DB::table('equipos as e')
+        ->where('e.Secuencial','=',$secuencialEq)
+        ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
+        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
+        ->join('tipoequipo as tipoequipo','tipoequipo.Secuencial','=','e.SecuencialTipoEquipo')
+        ->join('procesador as pro','pro.Secuencial','=','e.ProcesadorSecuencial')
+        ->select('r.Codigo','r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->get();
+       
+        $pdf = Pdf::loadView('reportes',['datosequipo'=>$datos]);
+        $pdf->setPaper('A4','landscape');
+       
+        return $pdf -> stream();
+
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -89,19 +104,6 @@ class EquipoController extends Controller
 
         $equipo = new Equipo();
         return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
-    }
-
-    public function createPDF(){
-        $equipos = DB::table('equipos as e')
-        ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
-        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
-        ->orderby('d.NombreDepartamento', 'asc')
-        ->select('r.Cedula','r.Codigo', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
-        ->get();
-        dd($equipos);
-        view() -> share('equipos',$equipos); 
-        $pdf = PDF::loadView('equipos',$equipos);
-        return $pdf->download('equipo-pdf.pdf');
     }
 
     /**

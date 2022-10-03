@@ -33,6 +33,8 @@ class Responsable extends Migration
 
             $table->tinyInteger('Activo');
 
+            $table->string('Codigo', 50);
+
         });
 
 

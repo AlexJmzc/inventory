@@ -21,6 +21,8 @@ class Programas extends Migration
 
             $table->string('Version', 50);
 
+            $table->string('Descripcion', 50);
+
         });
     }
 

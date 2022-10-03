@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoPeriferico extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class TipoPeriferico extends Migration
      */
     public function up()
     {
-        Schema::create('TipoAccesorio', function (Blueprint $table) {
-            $table->integer('Secuencial')->primary();
-            $table->string('Nombre', 50);
-            $table->tinyInteger('EntradaSalida');
-            $table->tinyInteger('Activo');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -28,6 +27,6 @@ class TipoPeriferico extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('password_resets');
     }
 }

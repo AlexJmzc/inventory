@@ -56,5 +56,22 @@ class DatosAccesorios extends Component
         return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas','equipo'));
     }
 
-    
+    public function destroy($Secuencial)
+    {
+        $nombre = 'datos-accesorios';
+        $equipo = DB::table('detalle as de')
+        ->where('de.AccesoriosSecuencial', '=', 1)
+        ->where('de.EquipoSecuencial', '=', 31)
+        ->select("e.Secuencial")
+        ->first();
+
+        dd($equipo);
+        
+        $accesorioActualizar = Detalle::find($equipo);
+
+        $accesorioActualizar->Activo = 0;
+        dd($accesorioActualizar);
+        $accesorioActualizar->save();
+    }
+
 }

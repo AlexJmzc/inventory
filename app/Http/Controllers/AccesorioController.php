@@ -173,14 +173,36 @@ class AccesorioController extends Controller
      * @param  \App\Models\Accesorio  $accesorio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accesorio $accesorio)
+    public function destroy($Secuencial)
     {
-        //
+        $nombre = 'datos-accesorios';
+        $equipo = DB::table('detalle as de')
+        ->where('de.AccesoriosSecuencial', '=', 1)
+        ->where('de.EquipoSecuencial', '=', 31)
+        ->select("e.Secuencial")
+        ->first();
+
+        dd($equipo);
+        
+        $accesorioActualizar = Detalle::find($equipo);
+
+        $accesorioActualizar->Activo = 0;
+        dd($accesorioActualizar);
+        $accesorioActualizar->save();
+
     }
 
-    public function quitar()
+    public function quitar(Request $request)
     {
+        $nombre = 'datos-accesorios';
+        $equipo = DB::table('detalle as de')
+        ->where('de.AccesoriosSecuencial', '=', 1)
+        ->where('de.EquipoSecuencial', '=', 31)
+        ->update(['de.Activo' => 0]);
+
         
+        // $accesorioActualizar = Detalle::find($equipo);
+
     }
 }
 

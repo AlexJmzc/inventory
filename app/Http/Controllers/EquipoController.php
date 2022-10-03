@@ -30,7 +30,6 @@ class EquipoController extends Controller
 
     public function index()
     {
-        dd("yo");
         $eq = Equipo::paginate();
 
         $equipos = DB::table('equipos as e')

@@ -20,8 +20,10 @@
             <table id="mytable" class="table display table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Departamento</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Cédula</th>
                         <th scope="col">Responsable</th>
+                        <th scope="col">Departamento</th>
                         <th scope="col">Nombre Computador</th>
                         <th scope="col">Dirección IP</th>
                     </tr>
@@ -29,17 +31,15 @@
                 <tbody id="equipos">
                     @foreach ($equipos as $equipo)
                     <tr>
-
-                        <td>{{ $equipo->NombreDepartamento }}</td>
+                        <td>{{ $equipo->Codigo }}</td>
+                        <td>{{ $equipo->Cedula }}</td>
                         <td>{{ $equipo->NombreCompleto }}</td>
+                        <td>{{ $equipo->NombreDepartamento }}</td>       
                         <td>{{ $equipo->Nombre }}</td>
                         <td>{{ $equipo->DireccionIP }}</td>
-
                     </tr>
                     @endforeach
                 </tbody>
-
-
             </table>
             <div>
 

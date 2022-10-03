@@ -30,7 +30,7 @@ class EquipoController extends Controller
 
     public function index()
     {
-        //
+        dd("yo");
         $eq = Equipo::paginate();
 
         $equipos = DB::table('equipos as e')
@@ -54,11 +54,12 @@ class EquipoController extends Controller
         ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
         ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
         ->orderby('d.NombreDepartamento', 'asc')
-        ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->select('r.Codigo','r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
         ->get();
-
+        //dd($equipos);
         $pdf = Pdf::loadView('reportes',['equipos'=>$equipos]);
-       // $pdf->loadHTML('<p>hola</p>');
+        $pdf->setPaper('A4','landscape');
+       
         return $pdf -> stream();
 //        return $pdf -> download('reporte.pdf');
 
@@ -87,11 +88,6 @@ class EquipoController extends Controller
             ->select('Nombre', 'Secuencial', 'Version', 'Descripcion')
             ->get();
 
-        // $programas = DB::table('programas')
-        // ->where('Descripcion','=','Sistema Operativo')
-        // ->select('Nombre', 'Secuencial', 'Version', 'Descripcion')
-        // ->get();
-
         $equipo = new Equipo();
         return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
     }
@@ -101,7 +97,7 @@ class EquipoController extends Controller
         ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
         ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
         ->orderby('d.NombreDepartamento', 'asc')
-        ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->select('r.Cedula','r.Codigo', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
         ->get();
         dd($equipos);
         view() -> share('equipos',$equipos); 

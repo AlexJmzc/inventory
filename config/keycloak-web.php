@@ -13,7 +13,7 @@ return [
      *
      * Default is master
      */
-    'realm' => env('KEYCLOAK_REALM', 'master'),
+    'realm' => env('KEYCLOAK_REALM', 'internal'),
 
     /**
      * The Keycloak Server realm public key (string).
@@ -49,7 +49,7 @@ return [
      *
      * @see Vizir\KeycloakWebGuard\Controllers\AuthController::callback()
      */
-    'redirect_url' => '/admin',
+    'redirect_url' => 'http://localhost:8000/equipo',
 
     /**
      * The routes for authenticate

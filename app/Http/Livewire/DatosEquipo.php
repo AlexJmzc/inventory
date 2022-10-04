@@ -44,9 +44,8 @@ class DatosEquipo extends Component
             return view('livewire.datos-equipo', compact('equipo','datosDisco2'));
         }
         
-        
-        
     }
+
 
     public function disco2($eq){
         $disco2 = DB::table('equipos as e')
@@ -54,11 +53,12 @@ class DatosEquipo extends Component
         ->join('marca as m', 'e.MarcaDisco2', '=', 'm.Secuencial')
         ->select('m.Nombre', 'e.CapacidadDisco2')
         ->first();
-        
-        
+
         return $disco2;
     }
 
+
+    //Metodo para actualizar datos del equipo
     public function update(Request $request)
     {
        

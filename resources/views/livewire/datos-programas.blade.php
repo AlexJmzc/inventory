@@ -1,9 +1,12 @@
+<!-- Pantalla con los datos de los programas del equipo -->
 <div class="container text-center">
     <div class="d-flex mb-4">
+        <!-- Titulo -->
         <div class="p-2 flex-grow-1">
             <h3><span class="badge bg-secondary">{{$equipo -> Nombre}}</span></h3>
         </div>
 
+        <!-- Boton para agregar programas -->
         <div class="p-2">
             <button type="button" class="btn btn-outline-success position-absolute top-3 end-0 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -15,11 +18,14 @@
         </div>
     </div>
 
+
+<!-- Control para cuando no existen programas -->
 @if($programas == null)
-<p class="h3"> No existe programas </p>
+<p class="h3"> No existen programas </p>
 @else
     <div class="row">
         @foreach($programas as $programa)
+        <!-- Card con los datos de cada programa -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center" style="color:white;">
@@ -57,8 +63,7 @@
     </div>
 @endif
     
-    <!-- Modal -->
-
+    <!-- Modal para agregar programas -->
     <div>
         <div class="modal fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -100,12 +105,8 @@
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
-
-
                         </form>
-
                     </div>
-
                 </div>
             </div>
         </div>

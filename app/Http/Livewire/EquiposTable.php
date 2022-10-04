@@ -43,6 +43,5 @@ class EquiposTable extends DataTableComponent
         return Equipo::query();
     }
 
-   
 
 }

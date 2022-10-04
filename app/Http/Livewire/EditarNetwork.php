@@ -14,6 +14,7 @@ class EditarNetwork extends Component
     }
 
 
+    
     public function render()
     {
         $network = DB::table("equipos as e")

@@ -10,49 +10,32 @@ use Illuminate\Support\Facades\DB;
 
 class AccesorioController extends Controller
 {
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function render(){
-        
-    }
+     
+    public function render(){}
     
+
     public function index()
     {
-        //
+        
         $tipo = DB::table("tipoaccesorio as a")
         ->select("a.Nombre as Nombre","a.Secuencial as Secuencial")
         ->orderBy("a.Secuencial", "desc")
         ->get();
-        
         return view('livewire.principal', compact('tipo'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         $tipo = DB::table('tipoaccesorio')
             ->select("Nombre", "Secuencial")
-            ->get();
-
-
-            
+            ->get();  
         return view('livewire.datos-accesorios', compact('tipo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+    //Metodo para guardar accesorios
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -93,6 +76,7 @@ class AccesorioController extends Controller
     }
 
 
+    //Metodo para agregar Detalle de accesorio
     public function AgregarDetalle($cedulaDetalle, $codigo, $date,$secEquipo)
     {
         $acces = DB::table('accesorios as a')
@@ -109,38 +93,14 @@ class AccesorioController extends Controller
         $detalle->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Accesorio  $accesorio
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
-        
-    }
+    
+    public function show($id){}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Accesorio  $accesorio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //$accesorio = Equipo::find($id);
+   
+    public function edit($id){}
 
-        //return view('detalleequipos', compact('equipo'));
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Accesorio  $accesorio
-     * @return \Illuminate\Http\Response
-     */
+    //Método para editar accesorios
     public function update(Request $request)
     {
        
@@ -167,21 +127,7 @@ class AccesorioController extends Controller
     }
     
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Accesorio  $accesorio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Accesorio $accesorio)
-    {
-        //
-    }
-
-    public function quitar()
-    {
-        
-    }
+    public function destroy(Accesorio $accesorio){}
 }
 
 

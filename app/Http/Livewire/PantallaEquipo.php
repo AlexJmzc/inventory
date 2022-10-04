@@ -13,9 +13,9 @@ class PantallaEquipo extends Component
         $this->aux = $auxiliar;
     }
 
+    
     public function render()
     {
-        
         
         $equipo = DB::table('Equipos as e')
         ->where('e.Secuencial','=', $this->aux)

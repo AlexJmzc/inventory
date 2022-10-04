@@ -1,4 +1,4 @@
-<!-- Image and text -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <nav class="navbar navbar-light p-2 text-dark bg-opacity-25 shadow p-3 mb-5" style="background: rgb(240, 235, 235);">
   <div class="container">
     <div class="d-flex align-items-center">
@@ -13,6 +13,8 @@
     <div class="d-flex">
       <a href="{{route('equipos.index')}}" class="me-2" href="#" style="text-decoration: none;color:black">Inicio</a>
     </div>
-
+    <div class="d-flex">
+      <a href="{{route('keycloak.logout')}}" class="me-2" href="#" style="text-decoration: none;color:black">Cerrar Sesion</a>
+    </div>
   </div>
 </nav>

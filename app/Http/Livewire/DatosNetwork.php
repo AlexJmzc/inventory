@@ -28,6 +28,8 @@ class DatosNetwork extends Component
         return view('livewire.datos-network', compact('network'));
     }
 
+    
+
     public function update(Request $request)
     {
        

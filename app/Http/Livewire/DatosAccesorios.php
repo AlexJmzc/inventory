@@ -11,8 +11,6 @@ class DatosAccesorios extends Component
     public $aux;
     
 
-    
-    
     public function mount($auxiliar){
         $this->aux = $auxiliar;
     }
@@ -56,6 +54,4 @@ class DatosAccesorios extends Component
 
         return view('livewire.datos-accesorios', compact('accesorios','tipo', 'marcas','equipo'));
     }
-
-    
 }

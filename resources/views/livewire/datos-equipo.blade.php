@@ -1,10 +1,14 @@
+<!-- Pantalla con los datos del equipo -->
 <div class="container text-center">
+    <!-- Titulo -->
     <div class="row">
         <div class="col  mb-5 mt-5">
             <h3><span class="badge bg-secondary">{{$equipo -> NombreEquipo}}</span></h3>
         </div>
     </div>
+    <!-- Cards con los datos -->
     <div class="row">
+        <!-- Card datos del HGPT -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center"  style="color:white;">
@@ -38,6 +42,7 @@
                 </ul>             
             </div>
         </div>
+        <!-- Card datos del equipo -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center"  style="color:white;">
@@ -83,6 +88,7 @@
                 </ul>             
             </div>
         </div>
+        <!-- Card datos de recursos del equipo -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center"  style="color:white;">
@@ -125,13 +131,15 @@
             </div>
         </div>
     </div>
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-outline-success" style="width:30%" data-bs-toggle="modal" data-bs-target="#editFormEquipo">Editar</button>
-            </div>
+
+    <!-- Boton editar -->
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-outline-success" style="width:30%" data-bs-toggle="modal" data-bs-target="#editFormEquipo">Editar</button>
         </div>
     </div>
 
+    <!-- Modal editar --> 
     <div class="modal fade modal" id="editFormEquipo" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
               @livewire('editar-equipo', ['nom' => $equipo -> NombreEquipo])
     </div>

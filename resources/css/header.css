@@ -14,7 +14,6 @@
     left: 0;
     width: 100vw;
     display: flex;
-    /*justify-content: space-between;*/
     align-items: center;
     padding: 15px 45px;
     z-index: 10;
@@ -27,6 +26,7 @@
     width: fit-content;
     height: fit-content;
 }
+
 
 .general header .navegacion li {
     list-style: none;

@@ -14,6 +14,8 @@ class EditarEquipo extends Component
         $this -> nombreEquipo = $nom;
     }
 
+
+    
     public function render()
     {
         $equipo = DB::table("equipos as e")

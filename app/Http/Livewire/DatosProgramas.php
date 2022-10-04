@@ -18,6 +18,8 @@ class DatosProgramas extends Component
         $this->aux = $auxiliar;
     }
 
+
+
     public function render()
     {
         $equipo = DB::table('equipos as e')
@@ -54,10 +56,8 @@ class DatosProgramas extends Component
         return view('livewire.datos-programas', compact('programas', 'listaProgramas','equipo'));
     }
 
-    public function create()
-    {
-    }
 
+    //Metodo para guardar programas
     public function store(Request $request)
     {
 

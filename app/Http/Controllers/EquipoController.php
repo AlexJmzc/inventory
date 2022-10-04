@@ -19,13 +19,10 @@ use function PHPUnit\Framework\isEmpty;
 
 class EquipoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public $name = 'pantalla-equipo';
    
+
     public function index()
     {
         
@@ -39,13 +36,12 @@ class EquipoController extends Controller
                      'e.Nombre', 'e.DireccionIP', 'e.CedulaResponsable', 'r.Codigo as CodigoResponsable')
             ->get();
 
-
-
-
         return view('livewire.tabla-equipos', compact('equipos', 'eq'))
             ->with('i', (request()->input('page', 1) - 1) * $eq->perPage());
     }
 
+
+    //Metodo para reporte en PDF
     public function pdf()
     {
         $equipos = DB::table('equipos as e')
@@ -59,37 +55,13 @@ class EquipoController extends Controller
         $pdf->setPaper('A4','landscape');
        
         return $pdf -> stream();
-//        return $pdf -> download('reporte.pdf');
-
     }
 
-    public function pdfEquipo(Request $request)
-    {
-        $secuencialEq = $request -> Sec;
-        $datos = DB::table('equipos as e')
-        ->where('e.Secuencial','=',$secuencialEq)
-        ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
-        ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
-        ->join('tipoequipo as tipoequipo','tipoequipo.Secuencial','=','e.SecuencialTipoEquipo')
-        ->join('procesador as pro','pro.Secuencial','=','e.ProcesadorSecuencial')
-        ->select('r.Codigo','r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
-        ->get();
-       
-        $pdf = Pdf::loadView('reportes',['datosequipo'=>$datos]);
-        $pdf->setPaper('A4','landscape');
-       
-        return $pdf -> stream();
-
-    }
     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+       
         $marcas = DB::table('marca')
             ->select("Nombre", "Secuencial")
             ->get();
@@ -106,15 +78,11 @@ class EquipoController extends Controller
         return view('components.crear-equipo', compact('equipo', 'marcas', 'procesadores', 'programas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
+
     public function store(Request $request)
     {
-        //
+        
         DB::beginTransaction();
         try {
             $ced = $request->cedulaResponsable;
@@ -190,7 +158,7 @@ class EquipoController extends Controller
 
             $codEquipo = $request->codigoEquipo;
 
-            //buscar-equipo
+            //Buscar-equipo
             $secEquipo = DB::table('equipos')
                 ->where("Codigo", "=", $codEquipo)
                 ->select("Secuencial")
@@ -216,7 +184,7 @@ class EquipoController extends Controller
             }
 
 
-            // programas
+            //Programas
             self::programasEquipo($request->listaProgramas, $secEquipo, $request->itemSO, $request->itemActivacionSO,$request->itemBits);
             self::programasEquipo($request->listaProgramasOtros, $secEquipo, $request->itemOtros, $request->itemActivacionOtros, $request->itemBits);
             self::programasEquipo($request->listaProgramasOfimatica, $secEquipo, $request->itemOfimatica, $request->itemActivacionOfimatica, $request->itemBits);
@@ -235,6 +203,8 @@ class EquipoController extends Controller
             ->with('success', 'Equipo agregado correctamente');
     }
 
+
+
     public function programasEquipo($lista, $secEquipo, $licencia,$activacion, $bits)
     {
         if (!empty($lista)) {
@@ -246,7 +216,6 @@ class EquipoController extends Controller
 
                 if (empty($licencia)) {
                     $programas->Licencia = 0;
-                    // dd($programas);
                 
                 }else{
                     $programas->Licencia = 1;
@@ -257,14 +226,13 @@ class EquipoController extends Controller
                     $programas->Activo = 1;
                 }
 
-                //dd($programas);
+                
                 $programas->save();
             }
         }
 
 
     }
-
 
 
 
@@ -281,6 +249,7 @@ class EquipoController extends Controller
         $accesorio->save();
     }
 
+
     public function AgregarDetalle($cedulaDetalle, $codigo, $date, $secEquipo)
     {
         $acces = DB::table('accesorios as a')
@@ -296,20 +265,15 @@ class EquipoController extends Controller
         $detalle->FechaDevolucion = '';
         $detalle->save();
     }
-    /**
-     * Display the specified resource.
-     *
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    // public function show(Request $request)
+    
+
+
     public function show(Request $request)
     {
         $id = $request->get('aux');
-        //dd($request);
-        // $nombre = 'pantalla-equipo';
+        
         $nombre = $request->get('name');
-        //dd($nombre);
+        
         $equipo = DB::table('equipos as e')
             ->where('e.Secuencial', $id)
             ->first();
@@ -318,30 +282,17 @@ class EquipoController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
         $equipo = Equipo::find($id);
 
         return view('detalleequipos', compact('equipo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function update(Request $request, Equipo $equipo)
     {
-        //
         $equipo->update($request->all());
 
         return redirect()->route('equipos.index')
@@ -350,13 +301,5 @@ class EquipoController extends Controller
 
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Equipo $equipo)
-    {
-    }
+    public function destroy(Equipo $equipo){}
 }

@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/inventory/resources/css/principal.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>Equipo</title>
 </head>
 <body>
     
-    <div><livewire:header></livewire:header></div>
+    <livewire:header></livewire:header>
     <div class="pantalla">
         <div class="navegacion">
             <livewire:navbar secuencial='{{ $equipo -> Secuencial }}'></livewire:navbar>
@@ -44,8 +45,7 @@
 </body>
     
 
-<footer style="margin-top: 50px;">
-    <x-footer ></x-footer>
+<footer style="margin-top:100px">
+    <x-footer></x-footer>
 </footer>
-
 </html>

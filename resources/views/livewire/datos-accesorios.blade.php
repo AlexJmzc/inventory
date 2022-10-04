@@ -1,9 +1,13 @@
+<!-- Pantalla en la que se cargan los cards de los accesorios -->
+
 <div class="container text-center">
+  <!-- Título --> 
   <div class="d-flex mb-4">
     <div class="p-2 flex-grow-1">
       <h3><span class="badge bg-secondary">{{$equipo -> Nombre}}</span></h3>
     </div>
 
+    <!-- Boton añadir --> 
     <div class="p-2">
       <button type="button" class="btn btn-outline-success position-absolute top-3 end-0 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -17,11 +21,12 @@
   </div>
 
 
-
+  <!-- Control para cuando no existen accesorios -->
   @if($accesorios == null)
-  <p class="h3"> No existe accesorios </p>
+  <p class="h3"> No existen accesorios </p>
   @else
   <div class="row">
+    <!-- Cards de accesorios -->
     @foreach($accesorios as $accesorio)
     <div class="col">
       <div class="card border-success mb-3">
@@ -29,10 +34,6 @@
           <div>
             {{ $accesorio -> TipoAccesorio }}
           </div>
-            <button class="btn btn-danger" type="button" style="width: max-content;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
-              </svg>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -51,6 +52,7 @@
             <h6>MARCA:</h6>
             <h8>{{ $accesorio -> Marca }}</h8>
           </li>
+          <!-- Control accesorio sin modelo -->
           <li class="list-group-item">
             <h6>MODELO:</h6>
             @if($accesorio -> Modelo == '')
@@ -59,6 +61,7 @@
             <h8>{{ $accesorio -> Modelo }}</h8>
             @endif
           </li>
+          <!-- Control accesorio sin serie -->
           <li class="list-group-item">
             <h6>SERIE:</h6>
             @if($accesorio -> Serie == '')
@@ -67,6 +70,7 @@
             <h8>{{ $accesorio -> Serie }}</h8>
             @endif
           </li>
+          <!-- Accesorio entrada/salida -->
           <li class="list-group-item">
             <h6>ENTRADA/SALIDA:</h6>
             @if($accesorio -> EntradaSalida == 0)
@@ -75,6 +79,7 @@
             <h8>SI</h8>
             @endif
           </li>
+          <!-- Control accesorio sin descripcion -->
           <li class="list-group-item">
             <h6>DESCRIPCION:</h6>
             @if($accesorio -> DescripcionAccesorio == '')
@@ -86,9 +91,11 @@
           <li class="list-group-item">
             <div class="container text-center">
               <div class="row">
+                <!-- Botón observaciones -->
                 <div class="col">
                   <button type="button" class="btn btn-outline-secondary mb-2" style="width:100%" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom{{ $loop->iteration }}" aria-controls="offcanvasRight">Observaciones</button>
                 </div>
+                <!-- Botón editar -->
                 <div class="col">
                   <button type="button" class="btn btn-outline-success" style="width:100%" data-bs-toggle="modal" data-bs-target="#editForm{{ $loop->iteration }}">Editar</button>
                 </div>
@@ -104,14 +111,16 @@
 
     @endforeach
   </div>
-  @foreach($accesorios as $accesorio)
-  <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
-    @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
-  </div>
 
-  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom{{ $loop->iteration }}" aria-labelledby="offcanvasBottomLabel">
-    @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
-  </div>
+  <!-- Modals observaciones o editar accesorios -->
+  @foreach($accesorios as $accesorio)
+    <div class="modal fade modal" id="editForm{{ $loop->iteration }}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
+      @livewire('editar-accesorios', ['sec' => $accesorio -> SecuencialAccesorio])
+    </div>
+
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom{{ $loop->iteration }}" aria-labelledby="offcanvasBottomLabel">
+      @livewire('observaciones', ['secuencial' => $accesorio -> SecuencialAccesorio])
+    </div>
   @endforeach
   @endif
 

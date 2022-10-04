@@ -1,10 +1,14 @@
+<!-- Pantalla con los datos de conectividad del equipo -->
 <div class="container text-center">
+    <!-- Titulo -->
     <div class="row">
         <div class="col  mb-5 mt-5">
             <h3><span class="badge bg-secondary">{{$network[0] -> Nombre}}</span></h3>
         </div>
     </div>
+    <!-- Cards con los datos -->
     <div class="row">
+        <!-- Card con datos de red del equipo -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center"  style="color:white;">
@@ -37,6 +41,7 @@
                 </ul>             
             </div>
         </div>
+        <!-- Card con datos de la impresora -->
         <div class="col">
             <div class="card border-success mb-3">
                 <div class="card-header bg-success text-center"  style="color:white;">
@@ -63,6 +68,7 @@
             </div>
         </div>
     </div>
+    <!-- Boton para editar -->
     <div class="container text-center mt-4">
         <div class="row">
             <div class="col">
@@ -71,6 +77,7 @@
         </div>
     </div>
 
+    <!-- Modal para editar -->
     <div class="modal fade modal" id="editFormNetwork" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
               @livewire('editar-network', ['nom' => $network[0] -> Nombre])
     </div>

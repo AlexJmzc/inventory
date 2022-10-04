@@ -263,6 +263,7 @@ class EquipoController extends Controller
         $detalle->AccesoriosSecuencial = $acces->Secuencial;
         $detalle->FechaEntrega = $date;
         $detalle->FechaDevolucion = '';
+        $detalle->Activo = 1;
         $detalle->save();
     }
     

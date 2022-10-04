@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\AccesorioController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Livewire\DatosAccesorios;
 use App\Http\Livewire\DatosProgramas;
 use App\Http\Livewire\DatosNetwork;
 use App\Http\Livewire\DatosEquipo;

@@ -39,7 +39,8 @@ class Detalle extends Model
 		'EquipoSecuencial',
 		'AccesoriosSecuencial',
 		'FechaEntrega',
-		'FechaDevolucion'
+		'FechaDevolucion',
+		'Activo'
 	];
 
 	public function accesorio()

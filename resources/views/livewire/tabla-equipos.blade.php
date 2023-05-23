@@ -54,7 +54,7 @@
                         <tbody id="equipos">
                             @foreach ($equipos as $equipo)
                             <tr>
-                                <td>{{ $equipo->CodigoResponsable }}</td>
+                                <td>{{ $equipo->Secuencial }}</td>
                                 <td>{{ $equipo->CedulaResponsable }}</td>
                                 <td>{{ $equipo->NombreCompleto }}</td>
                                 <td>{{ $equipo->NombreDepartamento }}</td>

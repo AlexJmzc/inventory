@@ -3,18 +3,15 @@
   <div class="container">
     <div class="d-flex align-items-center">
     <a class="navbar-brand align-middle" href="#">
-      <img src="http://localhost/inventory/resources/imagenes/LogoHGPT1.png" height="65" alt="HGPT Logo" loading="lazy" class="d-inline-block align-text-top me-2" />
+      <img src="http://localhost/inventory/resources/imagenes/logox.jpg" height="65" alt="Logo" loading="lazy" class="d-inline-block align-text-top me-2" />
     </a>
-    <h5 class="" style="text-align: center;"> HONORABLE GOBIERNO <br> PROVINCIAL DE TUNGURAHUA</h5>
+    <h5 class="" style="text-align: center;"> NOMBRE DE <br> LA EMPRESA</h5>
 
     </div>
 
 
     <div class="d-flex">
       <a href="{{route('equipos.index')}}" class="me-2" href="#" style="text-decoration: none;color:black">Inicio</a>
-    </div>
-    <div class="d-flex">
-      <a href="{{route('keycloak.logout')}}" class="me-2" href="#" style="text-decoration: none;color:black">Cerrar Sesion</a>
     </div>
   </div>
 </nav>

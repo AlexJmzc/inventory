@@ -2,5 +2,5 @@
 <div class="fixed-footer">
   <p>© <?php
   echo date("Y"); 
-      ?> H. Gobierno Provincial de Tungurahua</p>
+      ?> Empresa X</p>
 </div>

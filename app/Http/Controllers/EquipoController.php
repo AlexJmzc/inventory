@@ -33,7 +33,7 @@ class EquipoController extends Controller
             ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
             ->orderby('d.NombreDepartamento', 'asc')
             ->select('e.Secuencial', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"),
-                     'e.Nombre', 'e.DireccionIP', 'e.CedulaResponsable', 'r.Cedula as CodigoResponsable')
+                     'e.Nombre', 'e.DireccionIP', 'e.CedulaResponsable', 'r.Cedula as CedulaResponsable')
             ->get();
 
         return view('livewire.tabla-equipos', compact('equipos', 'eq'))
@@ -48,7 +48,7 @@ class EquipoController extends Controller
         ->join('responsable as r', 'e.CedulaResponsable', '=', 'r.Cedula')
         ->join('departamento as d', 'd.Secuencial', '=', 'r.SecuencialDepartamento')
         ->orderby('d.NombreDepartamento', 'asc')
-        ->select('r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
+        ->select('e.Secuencial', 'r.Cedula', 'd.NombreDepartamento', DB::raw("CONCAT(r.PrimerNombre, ' ',r.ApellidoPaterno, ' ', r.ApellidoMaterno ) AS NombreCompleto"), 'e.Nombre', 'e.DireccionIP')
         ->get();
        
         $pdf = Pdf::loadView('reportes',['equipos'=>$equipos]);

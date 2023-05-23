@@ -49,11 +49,7 @@
                             <a href="{{route('equipos.index')}}" id="op" class="me-2" href="#" style="color:black;">Inicio</a>
                         </div>
 
-                        <div class="d-flex">
-                            <a href="{{route('keycloak.logout')}}" class="me-2" href="#" style="text-decoration: none;color:black">Cerrar Sesion</a>
-                        </div>
-
-                        <!-- Authentication Links -->
+                        <!-- Authentication Links 
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -68,7 +64,7 @@
                         @endif
                         @else
                        
-                        @endguest
+                        @endguest-->
                     </ul>
                 </div>
             </div>

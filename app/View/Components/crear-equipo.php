@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class crear-equipo extends Component
+class crear_equipo extends Component
 {
     /**
      * Create a new component instance.

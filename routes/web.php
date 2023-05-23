@@ -12,7 +12,7 @@ use App\Http\Livewire\Observaciones;
 use App\Http\Livewire\Request;
 
 
-Route::group(['middleware' => 'keycloak-web'], function () {
+//Route::group(['middleware' => 'keycloak-web'], function () {
     Route::get('/', [EquipoController::class, 'index']);
 
     Route::resource('/equipos', EquipoController::class);
@@ -29,4 +29,4 @@ Route::group(['middleware' => 'keycloak-web'], function () {
 
     Route::get('reportes',[EquipoController::class,'pdf'])->name('equipos.pdf');
     
-});
+//});
